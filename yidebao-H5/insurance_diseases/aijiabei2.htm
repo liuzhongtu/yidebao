@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://r.xiumi.us/board/v5/2EA87/46654119 -->
+<html lang="zh-cn" data-useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36" class="ng-scope">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style type="text/css">
+			[uib-typeahead-popup].dropdown-menu {
+				display: block;
+			}
+		</style>
+		<style type="text/css">
+			.uib-time input {
+				width: 50px;
+			}
+		</style>
+		<style type="text/css">
+			.uib-datepicker .uib-title {
+				width: 100%;
+			}
+			
+			.uib-day button,
+			.uib-month button,
+			.uib-year button {
+				min-width: 100%;
+			}
+			
+			.uib-datepicker-popup.dropdown-menu {
+				display: block;
+			}
+			
+			.uib-button-bar {
+				padding: 10px 9px 2px;
+			}
+		</style>
+		<style type="text/css">
+			.ng-animate.item:not(.left):not(.right) {
+				-webkit-transition: 0s ease-in-out left;
+				transition: 0s ease-in-out left
+			}
+		</style>
+		<style type="text/css">
+			@charset "UTF-8";
+			[ng\:cloak],
+			[ng-cloak],
+			[data-ng-cloak],
+			[x-ng-cloak],
+			.ng-cloak,
+			.x-ng-cloak,
+			.ng-hide:not(.ng-hide-animate) {
+				display: none !important;
+			}
+			
+			ng\:form {
+				display: block;
+			}
+			
+			.ng-animate-shim {
+				visibility: hidden;
+			}
+			
+			.ng-anchor {
+				position: absolute;
+			}
+		</style>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="x-rim-auto-match" content="none">
+		<!--<meta id="metaDescription" name="description" content="为孩子购置重疾保险，这是一份深沉的爱，作为父母，当然希望它能帮助我们看得起各种病；爱加倍，精准赔付、国内唯一。">-->
+
+		<!--<script src="../img/insurance_diseases/aijiabei/hm.js.下载"></script>-->
+		<link rel="stylesheet" href="../template/css/aijiabei.css">
+		<link rel="stylesheet" href="../res/ux/iconfont.css">
+		<link rel="stylesheet" href="../template/css/ydb.css">
+		<link rel="stylesheet" href="../../utils/mobisscroll/css/mobiscroll.custom-3.0.0-beta2.min.css">
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="../../bootstrap/js/bootstrap.min.js"></script>
+		<script src="../../utils/mobisscroll/js/mobiscroll.custom-3.0.0-beta2.min.js"></script>
+		<script>
+			document.documentElement.setAttribute('data-useragent', navigator.userAgent);
+
+			$(function() {
+				var currYear = (new Date()).getFullYear();
+				var opt = {};
+				opt.date = {
+					preset: 'date'
+				};
+				opt.default = {
+					theme: 'ios', //皮肤样式  
+					display: 'center', //显示方式   
+					mode: 'scroller', //日期选择模式  
+					dateFormat: 'yyyy-mm-dd',
+					lang: 'zh',
+					showNow: true,
+					nowText: "今天",
+					startYear: currYear - 60, //开始年份  
+					endYear: currYear //结束年份
+				};
+
+				$("#birthday").mobiscroll($.extend(opt['date'], opt['default'])); //年月日型  
+				$("#holder_birthday").mobiscroll($.extend(opt['date'], opt['default'])); //年月日型  
+				console.log(opt)
+			});
+		</script>
+		<style>
+			/*音乐播放器*/
+			
+			.play:before {
+				content: "\e695";
+			}
+			
+			.play {
+				width: 5rem;
+				height: 5rem;
+				line-height: 5rem;
+				font-size: 5rem;
+				color: deeppink;
+				display: block;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 6rem;
+				bottom: 0;
+				-webkit-animation: play 3s both linear infinite;
+			}
+			
+			@-webkit-keyframes play {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+			
+			.paused {
+				-webkit-animation-play-state: paused;
+			}
+			
+			.run {
+				-webkit-animation-play-state: running;
+			}
+		
+		    .diseases-close-btn {
+		        position: relative;
+		        left: 0;
+		        bottom: 0;
+		        width: 100%;
+		        padding: 1.5rem 0;
+		        font-size: 1.6rem;
+		        color: #323232;
+		        text-align: center;
+		        background: #f8f8f8;
+		        border-top: 1px solid #eee;
+		      }
+		     .diseases-box{
+			      position: fixed;
+			      left: 0;
+			      bottom: -500px;
+			      width: 100%;
+			      height: 500px;
+			      background: #fff;
+			      z-index: 150;
+			      overflow-y: scroll;
+			      }
+		    .ul_one {margin-left: 20px;padding: 0px;}  
+   			.ul_one li {/*float: left;*/margin: 0px 35px 10px 30px;list-style: decimal;}  
+		</style>
+		<title>爱加倍</title>
+
+	</head>
+
+	<body>
+
+		<div id="shareImage" style="display: none;">
+			<img src="../img/insurance_diseases/aijiabei/a9e1048d76adf10540634c9cd398de58-sz_36387.jpg">
+		</div>
+
+		<div class="tn-reader-paper container ng-scope" ng-controller="PaperReaderController" tn-scroll-touch="onPaperScroll($event)" tn-scroll-touch-for="document">
+
+			<section class="row tn-board-head" ng-show="displaySystemTitle" style="">
+				<h3 ng-bind="showInfo.title || &#39;无标题&#39;" class="ng-binding">无惧白血病及大病， 1590元为孩子构建30万额度终身保障</h3>
+				<div class="tn-head-info">
+					<span class="time ng-binding" ng-bind="showInfo.created_at | date:&#39;yyyy-M-d&#39;">2017-6-12</span>
+					<span class="hor-sep"></span>
+					<span class="brand ng-binding" ng-bind="showInfo.owner.brand_name">怡得保</span>
+				</div>
+
+				<hr>
+			</section>
+
+			<section class="row tn-board-head-space ng-hide" ng-show="!displaySystemTitle" style=""></section>
+
+			<div class="loading-progress ng-hide" ng-show="!isReady" style="">
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+			<section style="display: inline-block;margin: 3px 0% 0px; position: static; box-sizing: border-box;">
+				<section class="row play_music" style='position:relative'>
+					<audio id="audio" src="../res/Sugar.mp3">
+						您的浏览器暂不支持audio标签。播放视频
+					</audio>
+					<i class="iconfont play" id="play"></i>
+				</section>
+				<section class="row tn-article-body" ng-show="isReady" tn-opera-house="" tn-atom-context="{ type: &#39;paper&#39;, inReader: true, animationEnabled: false }" style="">
+					<article class="dock-loader tn-scene-paper tn-show-root ng-scope tn-comp-inst tn-comp tn-from-house-reader_paper-cp ng-hide" tn-bind-comp-tpl-id="reader_paper-cp:sys/loader-flow-paper" tn-comp-role="root" ng-show="!htmlForPreview" tn-comp="cubes[0]" tn-comp-pose="compAttr.pose" style="">
+						<!-- ngInclude: compTemplatePath -->
+						<section class="tn-comp-pin tn-comp-style-pin tn-comp-anim-pin ng-scope" ng-include="compTemplatePath" tn-link="compAttr.link || comp.link" tn-link-frame="compAttr.linkFrame || comp.linkFrame" tn-sound="compAttr.sound" ng-style="compAttr.style" tn-pre-load-image="compAttr.style.backgroundImage" tn-animate="compAttr.anim">
+							<ul class="dock paper tn-page-slot ng-scope tn-cell-inst tn-cell tn-cell-group tn-child-position-absolute group-empty" tn-cell-type="group" tn-cell="pages" tn-link="cell.link" tn-link-frame="cell.linkFrame" ng-style="cell.style" tn-animate="(!cell ? &#39;__NOT_MOUNT__&#39; : cell.anim)" tn-animate-on-self="true" tn-sound="cell.sound" ng-class="{ &#39;group-empty&#39;: !(cellGroupItems.length) }">
+								<!-- ngRepeat: chd in cellGroupItems track by $index -->
+							</ul>
+						</section>
+					</article>
+					<div class="dock-loader tn-scene-paper tn-show-root ng-binding ng-scope" tn-renderer-accelerate="htmlForPreview" ng-bind-html="htmlForPreview | unsafe" ng-show="!!htmlForPreview" style="">
+						<section style="background-color: rgb(255, 255, 255); box-sizing: border-box;" class="ng-scope">
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; vertical-align: top; width: 75%; padding: 0px 5px 0px 0px; box-sizing: border-box;float: left;">
+										<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin: 3px 0% 0px; position: static; box-sizing: border-box;">
+												<section class="" style="text-align: justify; font-size: 16px; color: rgb(0, 175, 236); box-sizing: border-box;">
+													<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;">欢迎关注怡得保，为爱守护</strong></p>
+												</section>
+											</section>
+										</section>
+									</section>
+									<section class="" style="display: inline-block; vertical-align: top; width: 25%; box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="text-align: right; margin-top: 10px; margin-bottom: 10px; transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; width: 100%; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/2016-11-23-29.png" data-ratio="0.5742574" data-w="505" _width="100%"></section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="position: static; box-sizing: border-box;">
+									<section class="" style="box-sizing: border-box;">
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; width: 90%; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/1767fa7f27fd97a996d4a9126b1e8798-sz_69820.png" data-ratio="0.7526882" data-w="279" _width="90%"></section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin-top: 10px; margin-bottom: 10px; text-align: center; position: static; box-sizing: border-box;">
+									<section class="" style="width: 2em; border: 2px solid rgb(249, 110, 87); border-radius: 8px; display: inline-block; overflow: hidden; box-sizing: border-box;">
+										<section class="" style="background-color: rgb(254, 255, 255); box-sizing: border-box;">
+											<p style="margin: 0px; padding: 0px; box-sizing: border-box;">孩子</p>
+										</section>
+										<section style="width: 0px; border-width: 0.5em 1em; border-style: solid; border-color: rgb(255, 255, 255) rgb(249, 110, 87) rgb(249, 110, 87) rgb(255, 255, 255); box-sizing: border-box;"></section>
+										<section class="" style="background-color: rgb(249, 110, 87); color: rgb(255, 255, 255); box-sizing: border-box;">
+											<p style="margin: 0px; padding: 0px; box-sizing: border-box;">环境</p>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/f2ddeb4fe7e22fa4b3a179058106b0e7-sz_23549.jpg" data-ratio="0.5152057" data-w="559"></section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style=" transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); text-align: center; margin: 10px 0%; position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; width: 90%; vertical-align: top; box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin: 10px 0%; position: static; box-sizing: border-box;">
+												<section class="" style="text-align: justify; font-size: 16px; color: rgb(10, 157, 161); letter-spacing: 2px; line-height: 2; box-sizing: border-box;">
+													<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">白血病侵袭孩子生命的事例时有听闻，我们这些做父母的，除了恻隐之心，还有丝丝不安。身苦财尽的无力感挥之不去。然而给予坚毅的爱与守护是身为父母的必然责任。</p>
+													<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">有没有一种保险，能够看得起所有病？根据疾病实际花费来计算赔付额度？不要让我们在高费用疾病面前，嗟手仰天悲叹！</p>
+													<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">有没有一种保险，让宝宝来日长大，若有出国，也能享受国际救援？</p>
+													<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+												</section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; width: 100%; vertical-align: top; background-image: url(&quot;http://statics.xiumi.us/stc/images/templates-assets/tpl-paper/image/2016-9-6-13.gif&quot;); background-position: 0% -167.29%; background-repeat: repeat-y; background-size: 101.097%; background-attachment: scroll; box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="font-size: 16px; position: static; box-sizing: border-box;">
+												<section class="" style="display: inline-block; vertical-align: top; width: 30%; box-sizing: border-box;">
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="margin: 20px 0% 10px; transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); font-size: 16px; position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; width: 100%; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/2016-9-6-33.png" data-ratio="0.9360341" data-w="469" _width="100%"></section>
+													</section>
+												</section>
+												<section class="" style="display: inline-block; vertical-align: top; width: 40%; box-sizing: border-box;">
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="text-align: center; margin: 10px 0%; font-size: 11.2px; position: static; box-sizing: border-box;">
+															<section class="" style="width: 5em; height: 5em; margin: auto; display: inline-block; vertical-align: bottom; border-radius: 100%; box-shadow: rgb(170, 170, 170) 0px 0px 10px; background-color: rgb(177, 50, 54); box-sizing: border-box;">
+																<section style="display: table; width: 100%; height: 5em; box-sizing: border-box;">
+																	<section class="" style="display: table-cell; vertical-align: middle; width: 100%; line-height: 1.3; color: rgb(255, 255, 255); font-size: 27.5692px; padding: 10px; box-sizing: border-box;">
+																		<p style="margin: 0px; padding: 0px; box-sizing: border-box;">看</p>
+																	</section>
+																</section>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-size: 11.2px; position: static; box-sizing: border-box;">
+															<section class="" style="width: 5em; height: 5em; margin: auto; display: inline-block; vertical-align: bottom; border-radius: 100%; box-shadow: rgb(170, 170, 170) 0px 0px 10px; background-color: rgb(227, 184, 45); box-sizing: border-box;">
+																<section style="display: table; width: 100%; height: 5em; box-sizing: border-box;">
+																	<section class="" style="display: table-cell; vertical-align: middle; width: 100%; line-height: 1.3; color: rgb(255, 255, 255); font-size: 27.5692px; padding: 10px; box-sizing: border-box;">
+																		<p style="margin: 0px; padding: 0px; box-sizing: border-box;">得</p>
+																	</section>
+																</section>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-size: 11.2px; position: static; box-sizing: border-box;">
+															<section class="" style="width: 5em; height: 5em; margin: auto; display: inline-block; vertical-align: bottom; border-radius: 100%; box-shadow: rgb(170, 170, 170) 0px 0px 10px; background-color: rgb(177, 50, 54); box-sizing: border-box;">
+																<section style="display: table; width: 100%; height: 5em; box-sizing: border-box;">
+																	<section class="" style="display: table-cell; vertical-align: middle; width: 100%; line-height: 1.3; color: rgb(255, 255, 255); font-size: 27.5692px; padding: 10px; box-sizing: border-box;">
+																		<p style="margin: 0px; padding: 0px; box-sizing: border-box;">起</p>
+																	</section>
+																</section>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-size: 11.2px; position: static; box-sizing: border-box;">
+															<section class="" style="width: 5em; height: 5em; margin: auto; display: inline-block; vertical-align: bottom; border-radius: 100%; box-shadow: rgb(170, 170, 170) 0px 0px 10px; background-color: rgb(227, 184, 45); box-sizing: border-box;">
+																<section style="display: table; width: 100%; height: 5em; box-sizing: border-box;">
+																	<section class="" style="display: table-cell; vertical-align: middle; width: 100%; line-height: 1.3; color: rgb(255, 255, 255); font-size: 27.1451px; padding: 10px; box-sizing: border-box;">
+																		<p style="margin: 0px; padding: 0px; box-sizing: border-box;">病</p>
+																	</section>
+																</section>
+															</section>
+														</section>
+													</section>
+												</section>
+												<section class="" style="display: inline-block; vertical-align: top; width: 30%; box-sizing: border-box;">
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+													<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+															</section>
+														</section>
+													</section>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="text-align: right; margin: 0px 0% 10px; font-size: 17.6px; transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; width: 40%; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/2016-9-6-2-2.png" data-ratio="0.4944649" data-w="813" _width="40%"></section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style=" transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); position: static; box-sizing: border-box;">
+												<section class="" style="text-align: justify; color: rgb(128, 101, 72); font-size: 18px; line-height: 1.8; padding: 0px 15px; box-sizing: border-box;">
+													<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;"><span style="letter-spacing: 0px; box-sizing: border-box;">中英人寿爱加倍，完全满足孩子健康守护所需！</span></p>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+												</section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/caed139837a84603d0bf81c7adc11544-sz_17694.jpg" data-ratio="0.741784" data-w="426"></section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="position: static; box-sizing: border-box;display: inline-block;">
+									<section class="" style="display: inline-block; vertical-align: top; width: 20%; box-sizing: border-box;float: left;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="text-align: center; margin: 10px 0% 0px; position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/2016-11-23-22.gif" data-ratio="0.9729167" data-w="480"></section>
+										</section>
+									</section>
+									<section class="" style="display: inline-block; vertical-align: top; width: 80%; padding: 0px 0px 0px 5px; box-sizing: border-box;float: right;">
+										<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin-top: 10px; margin-bottom: 10px; transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); position: static; box-sizing: border-box;">
+												<section class="" style="display: inline-block; vertical-align: top; margin-bottom: -10px; box-sizing: border-box;">
+													<section class="" style="border-bottom: 2px solid rgb(0, 175, 236); background-color: rgb(254, 255, 255); padding: 0px 5px; font-size: 18px; color: rgb(202, 52, 63); box-sizing: border-box;">
+														<p style="margin: 0px; padding: 0px; box-sizing: border-box;">以0岁孩子缴纳保费1590元为例，保障利益如下</p>
+													</section>
+													<section style="display: inline-block; text-align: center; vertical-align: top; margin-top: -2px; box-sizing: border-box;">
+														<section style="width: 0px; border-top: 8px solid rgb(0, 175, 236); border-left: 8px solid rgb(0, 175, 236); border-right: 8px solid transparent !important; border-bottom: 8px solid transparent !important; box-sizing: border-box;"></section>
+														<section style="width: 0px; border-top: 6px solid rgb(255, 255, 255); border-left: 5px solid rgb(255, 255, 255); margin-top: -16px; margin-left: 2px; border-right: 5px solid transparent !important; border-bottom: 6px solid transparent !important; box-sizing: border-box;"></section>
+													</section>
+												</section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin-top: 10px; margin-bottom: 10px; text-align: center; font-size: 32px; position: static; box-sizing: border-box;">
+									<section class="" style="width: 1.6em; margin: auto; display: inline-block; box-sizing: border-box;">
+										<section style="height: 1.6em; width: 1.5em; border-top: 7px solid rgb(254, 230, 68); border-radius: 100%; box-sizing: border-box;"> </section>
+										<section class="" style="width: 2em; margin: -2em 0px; border-radius: 100%; transform: rotate(0.1deg); -webkit-transform: rotate(0.1deg); -moz-transform: rotate(0.1deg); -o-transform: rotate(0.1deg); font-size: 25.6px; line-height: 1.2em; padding-top: 0.5em; min-height: 2.2em !important; box-sizing: border-box;">
+											<section style="box-sizing: border-box;">1</section>
+										</section>
+										<section style="height: 1.6em; width: 1.5em; border-bottom: 7px solid rgb(37, 183, 170); border-radius: 100%; box-sizing: border-box;"> </section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="position: static; box-sizing: border-box;">
+									<section class="" style="box-sizing: border-box;">
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 0px 0% 10px; position: static; box-sizing: border-box;">
+									<section class="" style="font-size: 18px; letter-spacing: 5px; color: rgb(91, 143, 76); box-sizing: border-box;">
+										<p style="text-align: center; margin: 0px; padding: 0px; box-sizing: border-box;">白血病保障专项基金（30万元）</p>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;">
+									<section class="" style="box-sizing: border-box;">
+										<section style="float: left; box-sizing: border-box;">
+											<section style="width: 0.6em; height: 0.6em; border-radius: 100%; background-color: rgb(249, 110, 87); box-sizing: border-box;"></section> <img style="width: 1.5em; margin: -0.8em 0px 0px 0.3em; box-sizing: border-box;" src="../img/insurance_diseases/aijiabei/leaf-img01.png" data-ratio="1" data-w="50" _width="1.5em"> </section>
+										<section style="float: right; box-sizing: border-box;">
+											<section style="float: right; width: 0.6em; margin-left: -0.3em; height: 0.6em; border-radius: 100%; background-color: rgb(249, 110, 87); box-sizing: border-box;"></section> <img style="width: 1.5em; margin-top: 0.3em; box-sizing: border-box;" src="../img/insurance_diseases/aijiabei/leaf-img02.png" data-ratio="1" data-w="50" _width="1.5em"> </section>
+										<section style="clear: both; box-sizing: border-box;"></section>
+									</section>
+									<section class="" style="width: 100%; margin: -30px 0px 0px; padding: 10px 15px; display: inline-block; box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="text-align: justify; font-size: 18px; color: rgb(142, 201, 101); box-sizing: border-box;">
+													<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;"><span style="color: rgb(4, 4, 4); box-sizing: border-box;">肆虐的白血病前，中英爱加倍给予圆满的解决方案。1590元给孩子留足30万元白血病专项资金</span><strong style="box-sizing: border-box;">［终身保障］。</strong></p>
+												</section>
+											</section>
+										</section>
+									</section>
+									<section class="" style="margin: -25px 0px 0px; box-sizing: border-box;">
+										<section style="float: left; box-sizing: border-box;"> <img style="width: 1.5em; margin: 0px 0px -0.7em 0.26em; box-sizing: border-box;" src="../img/insurance_diseases/aijiabei/leaf-img03.png" data-ratio="1" data-w="50" _width="1.5em">
+											<section style="width: 0.6em; height: 0.6em; border-radius: 100%; background-color: rgb(249, 110, 87); box-sizing: border-box;"></section>
+										</section>
+										<section style="float: right; box-sizing: border-box;"> <img style="width: 1.5em; margin-right: 0.3em; box-sizing: border-box;" src="../img/insurance_diseases/aijiabei/leaf-img04.png" data-ratio="1" data-w="50" _width="1.5em">
+											<section style="width: 0.6em; height: 0.6em; margin: -0.7em 0px 0px 1.2em; border-radius: 100%; background-color: rgb(249, 110, 87); box-sizing: border-box;"></section>
+										</section>
+										<section style="clear: both; box-sizing: border-box;"></section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin-top: 10px; margin-bottom: 10px; text-align: center; font-size: 32px; position: static; box-sizing: border-box;">
+									<section class="" style="width: 1.6em; margin: auto; display: inline-block; box-sizing: border-box;">
+										<section style="height: 1.6em; width: 1.5em; border-top: 7px solid rgb(254, 230, 68); border-radius: 100%; box-sizing: border-box;"> </section>
+										<section class="" style="width: 2em; margin: -2em 0px; border-radius: 100%; transform: rotate(0.1deg); -webkit-transform: rotate(0.1deg); -moz-transform: rotate(0.1deg); -o-transform: rotate(0.1deg); font-size: 25.6px; line-height: 1.2em; padding-top: 0.5em; min-height: 2.2em !important; box-sizing: border-box;">
+											<p style="margin: 0px; padding: 0px; box-sizing: border-box;">2</p>
+										</section>
+										<section style="height: 1.6em; width: 1.5em; border-bottom: 7px solid rgb(37, 183, 170); border-radius: 100%; box-sizing: border-box;"> </section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 0px 0% 10px; position: static; box-sizing: border-box;">
+									<section class="" style="font-size: 18px; letter-spacing: 5px; color: rgb(91, 143, 76); box-sizing: border-box;">
+										<p style="text-align: center; margin: 0px; padding: 0px; box-sizing: border-box;">精准赔付，国内唯一</p>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;">
+									<section class="" style="padding: 10px; background-color: rgb(239, 239, 239); box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style=" transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); margin: 10px 0%; position: static; box-sizing: border-box;">
+												<section class="" style="font-size: 16px; color: rgb(130, 100, 74); line-height: 1.6; letter-spacing: 1px; padding: 0px 10px; box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;">0岁孩子1590元享受保障范围及额度</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: rgb(160, 160, 160); box-sizing: border-box;">&nbsp; <span style="background-color: rgb(71, 193, 168); color: rgb(255, 255, 255); box-sizing: border-box;">&nbsp;中英人寿<span style="color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); box-sizing: border-box;"></span></span><span style="color: rgb(211, 164, 107); box-sizing: border-box;"><span style="background-color: rgb(71, 193, 168); box-sizing: border-box;"></span><span style="background-color: rgb(255, 255, 255); box-sizing: border-box;"></span></span><span style="background-color: rgb(71, 193, 168); box-sizing: border-box;"></span></span></strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;"><br style="box-sizing: border-box;"></strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="text-align: center; box-sizing: border-box;" onclick='show_detail(1)'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 高费用疾病（20种） 病种</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保障额度：保障额度30万，若基本重疾已赔付 ，赔付额度为24万</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;" onclick='show_detail(2)'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 特定重疾（31种）&nbsp;病种</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保障额度：保障额度18万，若基本重疾已赔付 ，赔付额度为12万</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong style="box-sizing: border-box;" onclick='show_detail(3)'>基本重疾(38种) &nbsp;病种</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保障额度：保障额度6万</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;" onclick='show_detail(4)'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 轻症疾病(38种) &nbsp;病种</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保障额度：赔付2次<strong style="box-sizing: border-box;">，每次</strong>保障额度3万（最高6万）</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong style="box-sizing: border-box;">身故赔付</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">18岁前身故赔付2倍保额，18岁后身故，赔付18万元，如基本重疾已赔付，赔付额度为12万元；</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong style="box-sizing: border-box;">&nbsp; &nbsp;保证赔付</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保证最低18万赔付，最高36万赔付</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong style="box-sizing: border-box;">多倍赔付，最高赔付4次</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+												</section>
+											</section>
+										</section>
+									</section>
+									<section class="" style="width: 100%; text-align: right; margin-top: -4px; box-sizing: border-box;">
+										<section style="width: 50px; height: 4px; background-color: rgb(125, 106, 96); box-sizing: border-box;"></section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin-top: 10px; margin-bottom: 10px; text-align: center; font-size: 32px; position: static; box-sizing: border-box;">
+									<section class="" style="width: 1.6em; margin: auto; display: inline-block; box-sizing: border-box;">
+										<section style="height: 1.6em; width: 1.5em; border-top: 7px solid rgb(254, 230, 68); border-radius: 100%; box-sizing: border-box;"> </section>
+										<section class="" style="width: 2em; margin: -2em 0px; border-radius: 100%; transform: rotate(0.1deg); -webkit-transform: rotate(0.1deg); -moz-transform: rotate(0.1deg); -o-transform: rotate(0.1deg); font-size: 25.6px; line-height: 1.2em; padding-top: 0.5em; min-height: 2.2em !important; box-sizing: border-box;">
+											<p style="margin: 0px; padding: 0px; box-sizing: border-box;">3</p>
+										</section>
+										<section style="height: 1.6em; width: 1.5em; border-bottom: 7px solid rgb(37, 183, 170); border-radius: 100%; box-sizing: border-box;"> </section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 0px 0% 10px; position: static; box-sizing: border-box;">
+									<section class="" style="font-size: 18px; letter-spacing: 5px; color: rgb(91, 143, 76); box-sizing: border-box;">
+										<p style="text-align: center; margin: 0px; padding: 0px; box-sizing: border-box;">人性关怀</p>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 10px 0%; position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; width: 100%; vertical-align: top; box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="display: inline-block; vertical-align: bottom; width: 20%; padding: 0px 10px 0px 0px; box-sizing: border-box;float: left;">
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="text-align: center; margin: 0px 0%; position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; width: 100%; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/2017-3-27-4.png" data-ratio="0.8866667" data-w="300" _width="100%"></section>
+													</section>
+												</section>
+												<section class="" style="display: inline-block; vertical-align: bottom; width: 80%; box-sizing: border-box;">
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="color: rgb(243, 14, 14); font-size: 18px; box-sizing: border-box;">
+																<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保费双豁免，<span style="color: rgb(4, 4, 4); box-sizing: border-box;">被保险人轻症豁免&amp;投保人豁免（可附加），</span>剩余保费无须缴纳，<span style="color: rgb(4, 4, 4); box-sizing: border-box;">被保险人保单的保障利益不变</span></p>
+															</section>
+														</section>
+													</section>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin: 0px 0% 8px; position: static; box-sizing: border-box;">
+												<section class="" style="background-color: rgb(45, 69, 152); height: 3px; box-sizing: border-box;"></section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin-top: 10px; margin-bottom: 10px; text-align: center; font-size: 32px; position: static; box-sizing: border-box;">
+									<section class="" style="width: 1.6em; margin: auto; display: inline-block; box-sizing: border-box;">
+										<section style="height: 1.6em; width: 1.5em; border-top: 7px solid rgb(254, 230, 68); border-radius: 100%; box-sizing: border-box;"> </section>
+										<section class="" style="width: 2em; margin: -2em 0px; border-radius: 100%; transform: rotate(0.1deg); -webkit-transform: rotate(0.1deg); -moz-transform: rotate(0.1deg); -o-transform: rotate(0.1deg); font-size: 28px; line-height: 1.2em; padding-top: 0.5em; min-height: 2.2em !important; box-sizing: border-box;">
+											<p style="margin: 0px; padding: 0px; box-sizing: border-box;">4</p>
+										</section>
+										<section style="height: 1.6em; width: 1.5em; border-bottom: 7px solid rgb(37, 183, 170); border-radius: 100%; box-sizing: border-box;"> </section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 0px 0% 10px; position: static; box-sizing: border-box;">
+									<section class="" style="font-size: 18px; letter-spacing: 5px; color: rgb(91, 143, 76); box-sizing: border-box;">
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; 增值服务（绿通&amp;国际救援）</p>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 0px 0% 10px; position: static; box-sizing: border-box;">
+									<section class="" style="font-size: 16px; letter-spacing: 5px; color: rgb(209, 193, 215); box-sizing: border-box;">
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><span style="color: rgb(160, 160, 160); box-sizing: border-box;">1、中英人寿最著名、最为客户熟知的就是<span style="color: rgb(243, 14, 14); box-sizing: border-box;">全球SOS救援服务</span>：只要期交保费≥3000元，保单有效被保险人即可享受SOS服务至70岁，包括海外医疗援助16000美金/次，国内医疗援助3500美金/次，全年紧急救援不限次数。</span>
+										</p>
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><span style="color: rgb(160, 160, 160); box-sizing: border-box;">&nbsp;</span></p>
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><span style="color: rgb(160, 160, 160); box-sizing: border-box;">2、<span style="color: rgb(243, 14, 14); box-sizing: border-box;">重疾绿通</span>：新单单件主险保费≥3000元，投保人、被保险人、受益人甚至任意一人即可享受1年服务。涵盖80种重疾，保障宽泛;绿通医院覆盖<span style="color: rgb(9, 131, 36); box-sizing: border-box;">31个省、124个城市、534家三甲医院。</span></span>
+										</p>
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><span style="color: rgb(160, 160, 160); box-sizing: border-box;">&nbsp;</span></p>
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><span style="color: rgb(160, 160, 160); box-sizing: border-box;">3、<span style="color: rgb(243, 14, 14); box-sizing: border-box;">健康平台</span>：诊前专业健康咨询等服务;诊中丰富的医院资源;诊后免费会诊复查服务，提供专业二次诊疗意见。</span>
+										</p>
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; vertical-align: top; width: 46%; box-sizing: border-box;float: left;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin: 0.5em 0px; position: static; box-sizing: border-box;">
+												<section style="border-top: 1px dotted rgb(18, 39, 54); box-sizing: border-box;" class=""></section>
+											</section>
+										</section>
+									</section>
+									<section class="" style="display: inline-block; vertical-align: top; width: 8%; box-sizing: border-box;float: left;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="text-align: center; margin: 8px 0% 10px; position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/2017-5-10-1.gif" data-ratio="1.345" data-w="200"></section>
+										</section>
+									</section>
+									<section class="" style="display: inline-block; vertical-align: top; width: 46%; box-sizing: border-box;float: right;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin: 0.5em 0px; position: static; box-sizing: border-box;">
+												<section style="border-top: 1px dotted rgb(18, 39, 54); box-sizing: border-box;" class=""></section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<!--<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+							<section class="" style="margin: 0px 0% 10px; position: static; box-sizing: border-box;">
+								<section class="" style="font-size: 18px; letter-spacing: 5px; color: rgb(91, 143, 76); box-sizing: border-box;">
+									<p style="text-align: center; margin: 0px; padding: 0px; box-sizing: border-box;">我要投保测算</p>
+								</section>
+							</section>
+						</section>-->
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 10px 0%; position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; width: 100%; vertical-align: top; border-style: solid; border-width: 2px; border-radius: 11px; border-color: rgba(255, 255, 255, 0); background-color: rgba(252, 160, 183, 0.498039); padding: 10px; box-sizing: border-box;">
+										<section class="" style="margin: 20px 0; position: static; box-sizing: border-box;">
+											<section class="" style="width: 2.25em; height: 2.25em; border-left: 5px solid rgb(124, 220, 183); border-top: 5px solid rgb(124, 220, 183); box-sizing: border-box;"></section>
+											<section class="" style="margin-top: -2.25em; margin-left: 5px; padding-top: 5px; box-sizing: border-box;">
+												<section class="" style="background-color: rgb(247, 247, 247); padding: 10px; box-shadow: rgb(0, 0, 0) 0px 0px 0px; border-width: 0px; box-sizing: border-box;">
+
+													<section class="" style="margin: 10px 0% 20px; text-align: center; position: static; box-sizing: border-box;">
+														<section class="" style="border-left: 12px solid rgb(235, 52, 107); border-right: 12px solid rgb(235, 52, 107); display: inline-block; vertical-align: middle; border-radius: 12px; border-top-color: rgb(235, 52, 107); border-bottom-color: rgb(235, 52, 107); padding: 0px 6px; font-size: 16px; line-height: 1.4em; color: rgb(69, 204, 180); box-sizing: border-box;">
+															<p style="margin: 0px; padding: 0px; box-sizing: border-box;">基本信息</p>
+														</section>
+													</section>
+
+													<section class="" style="position: static; box-sizing: border-box;">
+														<section class="" style="display: inline-block; vertical-align: top; width: 50%; padding: 0px 3px 0px 0px; border-width: 0px; box-sizing: border-box;">
+															<section class="" style="margin: 5px 0% 0px; position: static; box-sizing: border-box;">
+																<section class="" style="text-align: justify; color: rgb(91, 69, 120); font-size: 12px; box-sizing: border-box;">
+																	<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">孩子生日</p>
+																</section>
+															</section>
+															<section class="" style="margin: 5px 0% 10px; position: static; box-sizing: border-box;">
+																<section class="" style="display: inline-block; width: 100%; vertical-align: top; background-color: rgb(255, 255, 255); padding: 5px; border-radius: 5px; border-width: 0px; border-style: none; border-color: rgb(62, 62, 62); box-sizing: border-box;">
+																	<section class="" style="margin: 0px 0%; position: static; box-sizing: border-box;">
+																		<section class="" style="color: rgb(114, 75, 102); font-size: 14px; box-sizing: border-box;">
+																			<input id="birthday" style="font-size:1em;border: 0;" value="1987-01-01" onselect="dateChange()" />
+																		</section>
+																	</section>
+																</section>
+															</section>
+														</section>
+														<section class="" style="display: inline-block; vertical-align: top; width: 50%; padding: 0px 0px 0px 3px; box-sizing: border-box;float: right;">
+															<section class="" style="margin: 5px 0% 0px; position: static; box-sizing: border-box;">
+																<section class="" style="text-align: justify; color: rgb(91, 69, 120); font-size: 12px; box-sizing: border-box;">
+																	<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">性别</p>
+																</section>
+															</section>
+															<section class="" style="margin: 5px 0% 10px; position: static; box-sizing: border-box;">
+																<section class="" style="display: inline-block; width: 100%; vertical-align: top; background-color: rgb(255, 255, 255); padding: 5px; border-radius: 5px; border-width: 0px; border-style: none; border-color: rgb(62, 62, 62); box-sizing: border-box;">
+																	<section class="" style="margin: 0px 0%; position: static; box-sizing: border-box;">
+																		<section class="" style="color: rgb(114, 75, 102); font-size: 14px; box-sizing: border-box;">
+																			<p style="margin: 0px; padding: 0px; box-sizing: border-box;">
+																				<label class="checkbox-inline"><input id="gender_male" type="radio" name="gender" value="male" checked="checked" onclick="genderChange(this)">男</label>
+																				<label class="checkbox-inline"><input id="gender_female" type="radio" name="gender" value="female" onclick="genderChange(this)">女</label>
+																				<br style="box-sizing: border-box;"></p>
+																		</section>
+																	</section>
+																</section>
+															</section>
+														</section>
+													</section>
+													<section class="" style="position: static; box-sizing: border-box;">
+														<section class="" style="display: inline-block; vertical-align: top; width: 50%; padding: 0px 3px 0px 0px; box-sizing: border-box;">
+															<section class="" style="margin: 10px 0% 0px; position: static; box-sizing: border-box;">
+																<section class="" style="text-align: justify; color: rgb(91, 69, 120); font-size: 12px; box-sizing: border-box;">
+																	<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">拟投保人生日</p>
+																</section>
+															</section>
+															<section class="" style="margin: 5px 0% 10px; position: static; box-sizing: border-box;">
+																<section class="" style="display: inline-block; width: 100%; vertical-align: top; background-color: rgb(255, 255, 255); padding: 5px; border-radius: 5px; border-width: 0px; border-style: none; border-color: rgb(62, 62, 62); box-sizing: border-box;">
+																	<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+																		<section class="" style="margin: 0px 0%; position: static; box-sizing: border-box;">
+																			<section class="" style="color: rgb(114, 75, 102); font-size: 14px; box-sizing: border-box;">
+																				<input id="holder_birthday" style="font-size:1em;border: 0;" value="1987-01-01" onselect="dateChange()" />
+																			</section>
+																		</section>
+																	</section>
+																</section>
+															</section>
+														</section>
+														<section class="" style="display: inline-block; vertical-align: top; width: 50%; padding: 0px 0px 0px 3px; box-sizing: border-box;float: right;">
+															<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+																<section class="" style="margin: 10px 0% 0px; position: static; box-sizing: border-box;">
+																	<section class="" style="text-align: justify; color: rgb(91, 69, 120); font-size: 12px; box-sizing: border-box;">
+																		<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">性别</p>
+																	</section>
+																</section>
+															</section>
+															<section class="" style="margin: 5px 0% 10px; position: static; box-sizing: border-box;">
+																<section class="" style="display: inline-block; width: 100%; vertical-align: top; background-color: rgb(255, 255, 255); padding: 5px; border-radius: 5px; border-width: 0px; border-style: none; border-color: rgb(62, 62, 62); box-sizing: border-box;">
+																	<section class="" style="margin: 0px 0%; position: static; box-sizing: border-box;">
+																		<section class="" style="color: rgb(114, 75, 102); font-size: 14px; box-sizing: border-box;">
+																			<p style="margin: 0px; padding: 0px; box-sizing: border-box;">
+																				<label class="checkbox-inline"><input id="gender_male" type="radio" name="gender" value="male" checked="checked" onclick="genderChange(this)">男</label>
+																				<label class="checkbox-inline"><input id="gender_female" type="radio" name="gender" value="female" onclick="genderChange(this)">女</label>
+																				<br style="box-sizing: border-box;"></p>
+																		</section>
+																	</section>
+																</section>
+															</section>
+														</section>
+													</section>
+													<section class="" style="margin: 10px 0% 0px; position: static; box-sizing: border-box;">
+														<section class="" style="text-align: justify; color: rgb(91, 69, 120); font-size: 12px; box-sizing: border-box;">
+															<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">保险名称</p>
+														</section>
+													</section>
+													<section class="" style="margin: 5px 0% 10px; position: static; box-sizing: border-box;">
+														<section class="" style="display: inline-block; width: 100%; vertical-align: top; background-color: rgb(255, 255, 255); padding: 5px; border-radius: 5px; border-width: 0px; border-style: none; border-color: rgb(62, 62, 62); box-sizing: border-box;">
+															<section class="" style="margin: 0px 0%; position: static; box-sizing: border-box;">
+																<section class="" style="color: rgb(114, 75, 102); font-size: 14px; box-sizing: border-box;">
+																	<p style="margin: 0px; padding: 0px; box-sizing: border-box;">爱加倍+投保人豁免</p>
+																</section>
+															</section>
+														</section>
+													</section>
+													<section class="" style="text-align: center; margin: 20px 0%; position: static; box-sizing: border-box;">
+														<img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/2017-2-11-4.png" data-ratio="0.1" data-w="640"></section>
+													<section class="" style="margin: 5px 0% 10px; position: static; box-sizing: border-box;">
+														<section class="" style="display: inline-block; width: 100%; vertical-align: top; background-color: rgb(255, 255, 255); padding: 10px; border-radius: 5px; border-width: 0px; border-style: none; border-color: rgb(62, 62, 62); box-sizing: border-box;">
+															<section class="" style="margin: 0px 0%; position: static; box-sizing: border-box;">
+																<section class="" style="text-align: justify; color: rgb(114, 75, 102); font-size: 14px; line-height: 1.8; box-sizing: border-box;">
+																	<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">留给宝宝一份坚毅的守护，纵遇大病，不惧费用</p>
+																</section>
+															</section>
+														</section>
+													</section>
+												</section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;">
+									<section class="" style="width: 2.25em; height: 2.25em; border-left: 5px solid rgb(124, 220, 183); border-top: 5px solid rgb(124, 220, 183); box-sizing: border-box;"></section>
+									<section class="" style="margin-top: -2.25em; margin-left: 5px; padding-top: 5px; box-sizing: border-box;">
+										<section class="" style="background-color: rgb(247, 247, 247); padding: 10px; box-shadow: rgb(0, 0, 0) 0px 0px 0px; border-width: 0px; box-sizing: border-box;">
+											<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+												<section class="" style="margin: 10px 0% 20px; text-align: center; position: static; box-sizing: border-box;">
+													<section class="" style="border-left: 12px solid rgb(202, 52, 63); border-right: 12px solid rgb(202, 52, 63); display: inline-block; vertical-align: middle; border-radius: 12px; border-top-color: rgb(202, 52, 63); border-bottom-color: rgb(202, 52, 63); padding: 0px 6px; font-size: 21px; line-height: 1.4em; color: rgb(69, 204, 180); box-sizing: border-box;">
+														<p style="margin: 0px; padding: 0px; box-sizing: border-box;">投保</p>
+													</section>
+												</section>
+											</section>
+											<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+												<section class="" style="position: static; box-sizing: border-box;">
+													<section class="" style="display: inline-block; vertical-align: top; width: 50%; box-shadow: rgb(0, 0, 0) 0px 0px 0px; padding: 0px 5px 0px 0px; box-sizing: border-box;float: left;">
+														<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+															<section class="" style="margin: 10px 0% 20px; font-size: 12.8px; position: static; box-sizing: border-box;"><input type="text" style="display: inline-block; border: 1px solid rgba(246, 243, 236, 0); border-radius: 2px; background-color: white; padding-left: 4px; padding-right: 4px; width: 100%; color: rgb(52, 54, 60); font-size: 15.36px; box-shadow: rgb(212, 212, 212) 0px 0px 2px; box-sizing: border-box;" placeholder="我的联系方式" class="ng-pristine ng-untouched ng-valid ng-empty" name="98e65ebd1aaa4cd56a9dc878a0674be0" opera-ng-model="" ng-model="userInputFormData[&#39;98e65ebd1aaa4cd56a9dc878a0674be0&#39;]"></section>
+														</section>
+													</section>
+													<section class="" style="display: inline-block; vertical-align: top; width: 50%; padding: 0px 0px 0px 5px; box-sizing: border-box;float: right;">
+														<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+															<section class="" style="margin: 10px 0% 20px; font-size: 12.8px; position: static; box-sizing: border-box;"><input type="text" style="display: inline-block; border: 1px solid rgba(246, 243, 236, 0); border-radius: 2px; background-color: white; padding-left: 4px; padding-right: 4px; width: 100%; color: rgb(52, 54, 60); font-size: 15.36px; box-shadow: rgb(212, 212, 212) 0px 0px 2px; box-sizing: border-box;" placeholder="代理人联系方式" class="ng-pristine ng-untouched ng-valid ng-empty" name="4ae02ca14117e98038d5c219088e59fe" opera-ng-model="" ng-model="userInputFormData[&#39;4ae02ca14117e98038d5c219088e59fe&#39;]"></section>
+														</section>
+													</section>
+												</section>
+											</section>
+											<section class="Powered-by-XIUMI V5" style="position: static; height: auto; box-sizing: border-box;" powered-by="xiumi.us">
+												<section class="" style=" font-size: 14.4px; margin: 0px 0% 10px; position: static; box-sizing: border-box;">
+													<section class="" style="width: 100%; box-sizing: border-box;">
+														<section class="" style="width: 100%; padding: 0.2em 0.5em; font-size: 16.2px; box-sizing: border-box;">选择投保份额（与1590元保障范围比较）</section>
+														<section style="width: 100%; padding: 0.2em 0.5em; box-sizing: border-box;">
+															<section class="" style="width: 50%; display: inline-block; color: rgb(52, 54, 60); box-sizing: border-box;float: left;"> <label style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; box-sizing: border-box;"> <input type="radio" name="7dc3dc64bbfcf2723d75a35392c5544c" value="0d964455e1b5f40546860a933c99398f" opera-ng-model="" class="ng-pristine ng-untouched ng-valid ng-empty" style="box-sizing: border-box;" ng-model="userInputFormData[&#39;7dc3dc64bbfcf2723d75a35392c5544c&#39;]"> <span class="" style="box-sizing: border-box;">1</span> </label> </section>
+															<section class="" style="width: 50%; display: inline-block; color: rgb(52, 54, 60); box-sizing: border-box;float: left;"> <label style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; box-sizing: border-box;"> <input type="radio" name="7dc3dc64bbfcf2723d75a35392c5544c" value="38f079eac4d95e0a7387e111552b5f7d" opera-ng-model="" class="ng-pristine ng-untouched ng-valid ng-empty" style="box-sizing: border-box;" ng-model="userInputFormData[&#39;7dc3dc64bbfcf2723d75a35392c5544c&#39;]"> <span class="" style="box-sizing: border-box;">1.25</span> </label> </section>
+															<section class="" style="width: 50%; display: inline-block; color: rgb(52, 54, 60); box-sizing: border-box;float: left;"> <label style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; box-sizing: border-box;"> <input type="radio" name="7dc3dc64bbfcf2723d75a35392c5544c" value="122038d0ac4762c9e00d64137114c067" opera-ng-model="" class="ng-pristine ng-untouched ng-valid ng-empty" style="box-sizing: border-box;" ng-model="userInputFormData[&#39;7dc3dc64bbfcf2723d75a35392c5544c&#39;]"> <span class="" style="box-sizing: border-box;">1.5</span> </label> </section>
+															<section class="" style="width: 50%; display: inline-block; color: rgb(52, 54, 60); box-sizing: border-box;float: left;"> <label style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; box-sizing: border-box;"> <input type="radio" name="7dc3dc64bbfcf2723d75a35392c5544c" value="1a3c043748e8b7edb8734ccb4233d131" opera-ng-model="" class="ng-pristine ng-untouched ng-valid ng-empty" style="box-sizing: border-box;" ng-model="userInputFormData[&#39;7dc3dc64bbfcf2723d75a35392c5544c&#39;]"> <span class="" style="box-sizing: border-box;">1.75</span> </label> </section>
+															<section class="" style="width: 50%; display: inline-block; color: rgb(52, 54, 60); box-sizing: border-box;float: left;"> <label style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; box-sizing: border-box;"> <input type="radio" name="7dc3dc64bbfcf2723d75a35392c5544c" value="17a3f1f09308010c71feeb0131934209" opera-ng-model="" class="ng-pristine ng-untouched ng-valid ng-empty" style="box-sizing: border-box;" ng-model="userInputFormData[&#39;7dc3dc64bbfcf2723d75a35392c5544c&#39;]"> <span class="" style="box-sizing: border-box;">2</span> </label> </section>
+															<section class="" style="width: 50%; display: inline-block; color: rgb(52, 54, 60); box-sizing: border-box;float: left;"> <label style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; box-sizing: border-box;"> <input type="radio" name="7dc3dc64bbfcf2723d75a35392c5544c" value="1d3156e036c7766a7b1ac374add984f8" opera-ng-model="" class="ng-pristine ng-untouched ng-valid ng-empty" style="box-sizing: border-box;" ng-model="userInputFormData[&#39;7dc3dc64bbfcf2723d75a35392c5544c&#39;]"> <span class="" style="box-sizing: border-box;">2.5</span> </label> </section>
+															<section class="" style="width: 50%; display: inline-block; color: rgb(52, 54, 60); box-sizing: border-box;float: left;"> <label style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; box-sizing: border-box;"> <input type="radio" name="7dc3dc64bbfcf2723d75a35392c5544c" value="bf61cb7c9570ec6a37b9eca0852b1f98" opera-ng-model="" class="ng-pristine ng-untouched ng-valid ng-empty" style="box-sizing: border-box;" ng-model="userInputFormData[&#39;7dc3dc64bbfcf2723d75a35392c5544c&#39;]"> <span class="" style="box-sizing: border-box;">3</span> </label> </section>
+															<section class="" style="width: 50%; display: inline-block; color: rgb(52, 54, 60); box-sizing: border-box;float: left;"> <label style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; box-sizing: border-box;"> <input type="radio" name="7dc3dc64bbfcf2723d75a35392c5544c" value="03df773ce88a3ae6b429fb77bca2f9c5" opera-ng-model="" class="ng-pristine ng-untouched ng-valid ng-empty" style="box-sizing: border-box;" ng-model="userInputFormData[&#39;7dc3dc64bbfcf2723d75a35392c5544c&#39;]"> <span class="" style="box-sizing: border-box;">3.5</span> </label> </section>
+														</section>
+													</section>
+												</section>
+											</section>
+											<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+												<a class="" title="xiumi" href="xiumish://form.opera/cubes/current/submit?prompt=%E8%B0%A2%E8%B0%A2%E6%82%A8%E7%9A%84%E5%8F%82%E4%B8%8E" target="" style="box-sizing: border-box;">
+													<section class="" style="margin: 10px 0%; text-align: center; position: static; box-sizing: border-box;">
+														<section class="" style="display: inline-block; border: 2px solid rgb(235, 52, 107); padding: 0.1em 0.3em; background-color: rgb(69, 204, 180); color: rgb(255, 255, 255); box-sizing: border-box;">
+															<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;">点击提交</strong></p>
+														</section>
+													</section>
+												</a>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 0.5em 0px; text-align: center; position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; border-radius: 5px; line-height: 2.3; background-color: rgb(107, 104, 104); font-size: 20.8px; color: rgb(255, 255, 255); width: 100%; box-sizing: border-box;">
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保费： &nbsp; &nbsp;（附加投保人豁免）</p>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 0.5em 0px; text-align: right; position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; width: 12.5em; height: 12.5em; padding: 3.8em 0px; background-image: url(&quot;http://statics.xiumi.us/stc/images/templates-assets/parts/001-header/t-b-11-tips-title-01-img0.png&quot;); background-position: 50% 50%; background-repeat: no-repeat; background-size: cover; box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="width: 70%; margin-left: 15%; transform: rotate(-13deg); -webkit-transform: rotate(-13deg); -moz-transform: rotate(-13deg); -o-transform: rotate(-13deg); box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="text-align: center; color: rgb(102, 102, 102); font-size: 24px; box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保障利益</p>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="width: 70%; margin-left: 20%; margin-top: 5%; transform: rotate(-13deg); -webkit-transform: rotate(-13deg); -moz-transform: rotate(-13deg); -o-transform: rotate(-13deg); box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="text-align: center; color: rgb(102, 102, 102); font-size: 18px; box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">缴费20年，终身保障，多次赔付</p>
+												</section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 30px 0% 10px; transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; width: 100%; vertical-align: top; border-style: solid; border-width: 1px; border-radius: 0px; border-color: rgb(45, 66, 87); padding: 10px; box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style=" transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); text-align: center; margin: -27px 0% 10px; position: static; box-sizing: border-box;">
+												<section class="" style="display: inline-block; width: 25%; vertical-align: top; background-color: rgb(254, 255, 255); padding: 0px 10px; border-width: 0px; box-sizing: border-box;">
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="margin: 0px 0%; position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; width: 100%; border-width: 0px; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/2017-6-6-10.gif" data-ratio="0.5343511" data-w="393" _width="100%"></section>
+													</section>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="font-size: 15px; box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><span style="letter-spacing: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="letter-spacing: 0px; background-color: rgb(71, 193, 168); box-sizing: border-box;">中英人寿</span></span>
+													</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><span style="letter-spacing: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong style="box-sizing: border-box;">高费用疾病（20种） 病种</strong></span></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保障额度：保障额度 &nbsp; &nbsp; 万，若基本重疾已赔付 ，赔付额度为 &nbsp; &nbsp; 万</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; <strong style="box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;特定重疾（31种）&nbsp;病种</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保障额度：保障额度 &nbsp; &nbsp;万，若基本重疾已赔付 ，赔付额度为 &nbsp; &nbsp;万</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong style="box-sizing: border-box;">基本重疾(38种) &nbsp;病种</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保障额度：保障额度 &nbsp; &nbsp;万</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;轻症疾病(20种) &nbsp;病种</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保障额度：赔付2次，每次保障额度 &nbsp; 万（最高 万）</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong style="box-sizing: border-box;">&nbsp;身故赔付</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">18岁前身故赔付2倍保额，18岁后身故，赔付 &nbsp; &nbsp;万元，如基本重疾已赔付，赔付额度为 &nbsp;万元；</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong style="box-sizing: border-box;">保证赔付</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">保证最低 &nbsp; &nbsp;万赔付，最高 &nbsp; 万赔付</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;多倍赔付，最高赔付4次</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp;</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong style="box-sizing: border-box;"> &nbsp;保费双豁免</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">投保人或被保险不幸罹患指定的轻症、重症或投保人身故，余下保费豁免，保单继续有效</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong style="box-sizing: border-box;">增值服务</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">享受健康平台咨询服务；年交保费》3000元享受享受全球SOS救援服务&amp;重疾绿通服务</p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong style="box-sizing: border-box;">&nbsp;豁免一年保费</strong></p>
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">投保份数》=1.75，豁免一年保费，缴纳19年</p>
+												</section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="position: static; box-sizing: border-box;">
+									<section class="" style="box-sizing: border-box;">
+										<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 80px 0% 10px; transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0px, 0px, 0px); -moz-transform: translate3d(0px, 0px, 0px); -o-transform: translate3d(0px, 0px, 0px); text-align: center; position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; width: 100%; vertical-align: top; background-color: rgb(222, 245, 253); padding: 0px 10px 10px; border-radius: 11px; border-width: 0px; border-style: none; border-color: rgb(62, 62, 62); box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin: -70px 0% 0px; position: static; box-sizing: border-box;"><img style="max-width: 100%; vertical-align: middle; width: 40%; border-color: rgb(144, 201, 224); border-width: 3px; border-radius: 0px; border-style: solid; box-sizing: border-box;" class="" src="../img/insurance_diseases/aijiabei/da109c59b4eb0fcceb54816a66652d43-sz_20587.jpg" data-ratio="1" data-w="258" _width="40%"></section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin: 10px 0% 0px; position: static; box-sizing: border-box;">
+												<section class="" style="font-size: 16px; color: rgb(68, 68, 68); padding: 0px 15px; line-height: 2; box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;">怡得保.为您优选为您推荐</p>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin: 8px 0% 15px; position: static; box-sizing: border-box;">
+												<section class="" style="background-color: rgb(0, 0, 0); height: 1px; box-sizing: border-box;"></section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="display: inline-block; vertical-align: middle; width: 35%; padding: 0px 10px 0px 0px; box-sizing: border-box;float: left;">
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="font-size: 27.2px; position: static; box-sizing: border-box;">
+															<section class="" style="box-sizing: border-box; display: inline-block; vertical-align: top; width: 3em; height: 3em; margin: auto; border-radius: 100%; border: 1px solid rgb(0, 0, 0); background-image: url(&quot;//img.xiumi.us/xmi/ua/KGp0/i/caed139837a84603d0bf81c7adc11544-sz_17694.jpg?x-oss-process=style/xm&quot;); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+																<section class="" style="width: 100%; height: 100%; overflow: hidden; box-sizing: border-box;"> <img class="" style="width: 100%; height: 100%; opacity: 0; box-sizing: border-box;" src="../img/insurance_diseases/aijiabei/caed139837a84603d0bf81c7adc11544-sz_17694.jpg" data-ratio="0.741784" data-w="426" _width="100%"></section>
+															</section>
+														</section>
+													</section>
+												</section>
+												<section class="" style="display: inline-block; vertical-align: middle; width: 65%; box-sizing: border-box;float: right;">
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="margin: 0px 0%; position: static; box-sizing: border-box;">
+															<section class="" style="text-align: left; color: rgb(189, 195, 199); box-sizing: border-box;">
+																<p style="color: rgb(68, 68, 68); font-size: 13px; white-space: normal; letter-spacing: 1px; margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;">美臣怡得保</strong></p>
+																<p style="color: rgb(68, 68, 68); font-size: 13px; white-space: normal; letter-spacing: 1px; margin: 0px; padding: 0px; box-sizing: border-box;"><span style="font-size: 11px; box-sizing: border-box;">微信号 :yidebao2016</span></p>
+																<p style="color: rgb(68, 68, 68); white-space: normal; letter-spacing: 1px; margin: 0px; padding: 0px; box-sizing: border-box;"><span style="font-size: 11px; box-sizing: border-box;">新浪微博：@怡得保</span></p>
+															</section>
+														</section>
+													</section>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="position: static; box-sizing: border-box;">
+												<section class="" style="text-align: left; box-sizing: border-box;">
+													<p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+												</section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin-bottom: 10px; margin-right: 22px; text-align: center; position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; vertical-align: top; width: 0px; box-sizing: border-box;">
+										<section style="width: 0px; border-top: 24px solid rgb(249, 110, 87); border-left: 11px solid transparent !important; border-right: 11px solid transparent !important; box-sizing: border-box;"></section>
+										<section style="width: 0px; margin: -25px 1px 0px; border-top: 22px solid rgb(255, 255, 255); border-left: 10px solid transparent !important; border-right: 10px solid transparent !important; box-sizing: border-box;"></section>
+									</section>
+								</section>
+							</section>
+							<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+								<section class="" style="margin: 0px 0%; position: static; box-sizing: border-box;">
+									<section class="" style="display: inline-block; width: 100%; vertical-align: top; box-sizing: border-box;">
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="font-size: 12.8px; margin: 0px 0% -10px; transform: translate3d(3px, 0px, 0px); -webkit-transform: translate3d(3px, 0px, 0px); -moz-transform: translate3d(3px, 0px, 0px); -o-transform: translate3d(3px, 0px, 0px); position: static; box-sizing: border-box;">
+												<section class="" style="display: inline-block; box-sizing: border-box;">
+													<section class="" style="height: 2em; line-height: 2em; display: inline-block; vertical-align: top; background-color: rgb(239, 66, 119); color: rgb(255, 255, 255); font-size: 13.7846px; text-align: center; padding-left: 8px; padding-right: 8px; box-sizing: border-box;">
+														<p style="margin: 0px; padding: 0px; box-sizing: border-box;">美臣保险经纪集团</p>
+													</section>
+													<section style="display: inline-block; vertical-align: top; width: 0px; border-left: 1em solid rgb(239, 66, 119); font-size: 16px; border-top: 1em solid transparent !important; border-bottom: 1em solid transparent !important; box-sizing: border-box;"> </section>
+													<section style="width: 0px; border-right: 0.6em solid rgb(2, 32, 99); border-top: 0.6em solid rgb(2, 32, 99); border-left: 0.6em solid transparent !important; border-bottom: 0.6em solid transparent !important; box-sizing: border-box;"></section>
+												</section>
+											</section>
+										</section>
+										<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+											<section class="" style="margin: 0px 0%; font-size: 16px; position: static; box-sizing: border-box;">
+												<section class="" style="display: inline-block; width: 100%; vertical-align: top; padding: 0px 0px 0px 16px; border-width: 0px; box-sizing: border-box;">
+													<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+														<section class="" style="position: static; box-sizing: border-box;">
+															<section class="" style="display: inline-block; width: 100%; vertical-align: top; border-left: 2px dashed rgb(160, 160, 160); border-bottom-left-radius: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box;">
+																<section class="Powered-by-XIUMI V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
+																	<section class="" style="margin: 10px 0%; position: static; box-sizing: border-box;">
+																		<section class="" style="text-align: justify; font-size: 14px; box-sizing: border-box;">
+																			<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">美臣保险经纪集团有限公司于2013年3月经中国保险监督委员会批准设立的保险中介.</p>
+																			<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">集团（下简称“美臣集团”），是一家具有专业金融服务能力及丰富市场经验的综合性集团。拥有代理、经纪、公估全系列经营牌照，覆盖保险销售及后端服务各领域，其中区域性子公司49家，全国性全资子公司4家。集团注册资本为人民币1亿元，主营业务为保险经纪、代理及公估业务，经营险种覆盖财产险、人身险、寿险等。在全国20多个省市拥有90多家机构及营业网点，保费规模近35亿元，占全国市场份额3%，是当前中国保险中介行业的领军企业之一 。集团先后荣获 “中国最具发展潜质创新企业奖”、“中国十大最具影响力保险中介机构”、“最佳保险中介机构”等荣誉。</p>
+																			<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+																			<p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;"></p>
+																		</section>
+																	</section>
+																</section>
+															</section>
+														</section>
+													</section>
+												</section>
+											</section>
+										</section>
+									</section>
+								</section>
+							</section>
+						</section>
+					</div>
+				</section>
+
+				<section class="row tn-board-foot" ng-show="isReady" style="">
+					<hr>
+
+					<div class="col-xs-3 text-left no-padding">
+						阅读 <span ng-bind="hitCount | hitCountText" class="ng-binding">106</span>
+					</div>
+					<div class="col-xs-6 text-center no-padding">
+						<!-- ngIf: showLogo -->
+						<a class="no-decoration ng-scope" ng-if="showLogo">
+							由秀米提供技术支持
+						</a>
+						<!-- end ngIf: showLogo -->
+					</div>
+					<div class="col-xs-3 text-right no-padding">
+						<a class="report-button" ng-href="/report/46654119" href="http://r.xiumi.us/report/46654119">
+							举报
+						</a>
+					</div>
+				</section>
+
+				<a ng-href="" target="_blank">
+					<section class="row tn-board-advert ng-hide" ng-show="isReady &amp;&amp; showAdvert">
+						<div class="col-xs-12 text-center">
+							<div class="prompt">广告</div>
+						</div>
+						<div class="col-xs-12">
+							<img class="advert-image">
+						</div>
+					</section>
+				</a>
+
+		</div>
+
+		<div style="height:350px;" class="diseases-box p-rel" id="a1">
+			<div style="margin:0;padding-bottom:0px;" class="page-header">
+				<h5 style="text-align:center;padding-top:0px;">病种详情</h5>
+			</div>
+
+			<br/>
+
+			<div id="high_content">
+				<ul id="high_case_list" class="ul_one">
+					<li>高费用恶性肿瘤（脑癌/白血病/恶性淋巴瘤/食道癌/胰腺癌）</li>
+					<li>重大器官移植术或造血干细胞移植术</li>
+					<li>多个肢体缺失</li>
+					<li>慢性肝功能衰竭失代偿期</li>
+					<li>严重Ⅲ度烧伤</li>
+					<li>严重原发性肺动脉高压</li>
+					<li>严重运动神经元病</li>
+					<li>多发性硬化症</li>
+					<li>系统性硬皮病</li>
+					<li>胰腺移植</li>
+					<li>肾髓质囊性病</li>
+					<li>原发性硬化性胆管炎</li>
+					<li>自体造血干细胞移植</li>
+					<li>小肠移植</li>
+					<li>肺泡蛋白质沉积症</li>
+					<li>肺淋巴管肌瘤病</li>
+					<li>严重自身免疫性肝炎</li>
+					<li>进行性核上性麻痹</li>
+					<li>严重肌营养不良症</li>
+					<li>严重面部烧伤</li>
+				</ul>
+			</div>
+
+			<div class="diseases-close-btn">关 闭</div>
+		</div>
+
+		<div style="height:350px;" class="diseases-box p-rel" id="a2">
+			<div style="margin:0;padding-bottom:0px;" class="page-header">
+				<h5 style="text-align:center;padding-top:0px;">病种详情</h5>
+			</div>
+
+			<br/>
+
+			<div id="specific_content">
+				<ul id="specific_case_list" class="ul_one">
+					<li>特定恶性肿瘤（胃癌/肺癌/结直肠癌/肾癌/宫颈癌）</li>
+					<li>急性心肌梗塞</li>
+					<li>脑中风后遗症</li>
+					<li>冠状动脉搭桥术</li>
+					<li>终末期肾病</li>
+					<li>急性或亚急性重症肝炎</li>
+					<li>良性脑肿瘤</li>
+					<li>脑炎或脑膜炎后遗症</li>
+					<li>心脏瓣膜手术</li>
+					<li>严重脑损伤</li>
+					<li>严重帕金森病</li>
+					<li>重型再生障碍性贫血</li>
+					<li>主动脉手术</li>
+					<li>胰岛素依赖型糖尿病</li>
+					<li>慢性呼吸功能衰竭</li>
+					<li>严重心肌病</li>
+					<li>重症肌无力</li>
+					<li>严重克隆病</li>
+					<li>严重溃肠性结肠炎</li>
+					<li>严重脊髓灰质炎</li>
+					<li>重症急性坏死性筋膜炎</li>
+					<li>严重川崎病</li>
+					<li>丝虫病所致象皮肿</li>
+					<li>急性坏死性胰岛炎开腹手术</li>
+					<li>慢性复发性胰岛炎</li>
+					<li>疯牛病</li>
+					<li>特发性慢性肾上腺皮质功能减退</li>
+					<li>重症骨髓增生异常综合征</li>
+					<li>婴儿进行性脊肌萎缩症</li>
+					<li>严重瑞士综合征</li>
+					<li>肝豆状核变性</li>
+				</ul>
+			</div>
+
+			<div class="diseases-close-btn">关 闭</div>
+		</div>
+
+		<div style="height:350px;" class="diseases-box p-rel" id="a3">
+			<div style="margin:0;padding-bottom:0px;" class="page-header">
+				<h5 style="text-align:center;padding-top:0px;">病种详情</h5>
+			</div>
+
+			<br/>
+
+			<div id="basic_content">
+				<ul id="basic_case_list" class="ul_one">
+					<li>恶性肿瘤</li>
+					<li>急性心肌梗塞</li>
+					<li>脑中风后遗症</li>
+					<li>重大器官移植术</li>
+					<li>冠状动脉搭桥术</li>
+					<li>终末期肾病</li>
+					<li>多个肢体缺失</li>
+					<li>急性或亚急性重症肝炎</li>
+					<li>良性脑肿瘤</li>
+					<li>慢性肝功能衰竭失代偿期</li>
+					<li>脑炎或脑膜炎后遗症</li>
+					<li>深度昏迷</li>
+					<li>双目失聪</li>
+					<li>双目失明</li>
+					<li>瘫痪</li>
+					<li>心脏瓣膜手术</li>
+					<li>严重艾尔次海默病</li>
+					<li>严重脑损伤</li>
+					<li>严重帕金森病</li>
+					<li>严重卅度烧伤</li>
+					<li>严重原发性肺动脉高压</li>
+					<li>严重运动神经元病</li>
+					<li>语言能力丧失</li>
+					<li>重型再生障碍性贫血</li>
+					<li>主动脉手术</li>
+					<li>多发性硬化症</li>
+					<li>胰岛素依赖型糖尿病</li>
+					<li>慢性呼吸功能衰竭</li>
+					<li>植物人状态</li>
+					<li>严重心肌病</li>
+					<li>重症肌无力</li>
+					<li>因职业关系导致的人类免疫缺陷病毒（HIV）感染</li>
+					<li>经输血导致的人类免疫缺陷病毒（HIV）感染</li>
+					<li>严重类风湿性关节炎</li>
+					<li>系统性红斑狼疮性肾炎</li>
+					<li>严重克隆病</li>
+					<li>严重溃肠性结肠炎</li>
+					<li>非艾尔次海默所致严重痴呆</li>
+				</ul>
+			</div>
+
+			<div class="diseases-close-btn">关 闭</div>
+		</div>
+
+		<div style="height:350px;" class="diseases-box p-rel" id="a4">
+			<div style="margin:0;padding-bottom:0px;" class="page-header">
+				<h5 style="text-align:center;padding-top:0px;">病种详情</h5>
+			</div>
+
+			<br/>
+
+			<div id="mild_content">
+				<ul id="mild_case_list" class="ul_one">
+					<li>极早期的恶性肿瘤或恶性病变</li>
+					<li>不典型的急性心肌梗塞</li>
+					<li>轻微脑中风</li>
+					<li>继发性肺动脉高压</li>
+					<li>早期肝硬化</li>
+					<li>视力严重受损</li>
+					<li>心脏瓣膜经皮经导管介入手术</li>
+					<li>主动脉内手术</li>
+					<li>冠状动脉搭桥术</li>
+					<li>脑垂体瘤、脑囊肿、脑动脉瘤及脑血管瘤</li>
+					<li>轻度帕金森病</li>
+					<li>脑损伤</li>
+					<li>单侧肺脏切除</li>
+					<li>微创冠状动脉搭桥手术</li>
+					<li>一肢缺失</li>
+					<li>中度瘫痪</li>
+					<li>中度艾尔次海默病</li>
+					<li>人工耳蜗植入手术</li>
+					<li>可逆性再生障碍性贫血</li>
+					<li>腔静脉过滤移植入术</li>
+				</ul>
+			</div>
+
+			<div class="diseases-close-btn">关 闭</div>
+		</div>
+		<div class="body-shade" style="display: none"></div>  
+		<!--<section class="tn-scripts tn-last-block">
+    <script src="../img/insurance_diseases/aijiabei/jweixin-1.0.0.js.下载"></script>
+
+    <script src="../img/insurance_diseases/aijiabei/22b0eb.ng-tpl.min.js.下载"></script>
+
+    <script type="text/javascript" src="../img/insurance_diseases/aijiabei/ng-tpl.js.下载"></script>
+
+    <script src="../img/insurance_diseases/aijiabei/952acc.main.min.js.下载"></script>
+
+</section>-->
+
+	</body>
+	<script>
+		/*播放器*/
+		var audio = document.getElementById("audio")
+		var play = document.getElementById("play")
+		var flag = true
+		play.className = "iconfont play paused";
+		play.onclick = function() {
+			if(flag) {
+				audio.play();
+				this.className = "iconfont play run";
+			} else {
+				audio.pause();
+				this.className = "iconfont play paused";
+			}
+			flag = !flag;
+		}
+		    /*爱加倍病种详情*/
+        function show_detail(s){
+            if(s==1){
+                console.log(111111);
+                $('#a1').animate({ 'bottom': 0 }, 500);
+                    $('.body-shade').show();
+                    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '10%' });
+            }
+            else if(s==2){
+                 console.log(2222);
+                $('#a2').animate({ 'bottom': 0 }, 500);
+                    $('.body-shade').show();
+                    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+            }else if(s==3){
+                  $('#a3').animate({ 'bottom': 0 }, 500);
+                    $('.body-shade').show();
+                    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+            }else if(s==4){
+                  $('#a4').animate({ 'bottom': 0 }, 500);
+                    $('.body-shade').show();
+                    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+            }
+
+
+        }
+        
+        
+        
+        
+        $('.diseases-close-btn').click(function() {
+            $(this).parent().animate({ 'bottom': '-500px' }, 300);
+            //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+            $('.body-shade').hide();
+            $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+            window.location.href = "#bottom";
+        })
+	</script>
+
+</html>

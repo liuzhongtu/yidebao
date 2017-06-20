@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>怡得保商城</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../bootstrap/css/paper/bootstrap.css">
+        <link rel="stylesheet" href="../template/css/ydb.css">
+        <script src="../../bootstrap/js/jquery.min.js"></script>
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <script src="insurance_diseases.js"></script>        
+
+        <style>   
+
+            ul li{  
+            list-style-type:none;  
+            margin:10px 10px 30px 10px;
+            padding:0px;
+            }  
+
+            ul {
+              margin:0px 10px;
+              padding:0px 10px;
+            }
+
+            .result_product{
+             color: #0b7;
+             font-size:1.2em;
+             margin-top: 0;
+             padding-top:0;
+             padding-right:5px;
+             margin-right:10px;
+            }
+
+            .info{
+              font-color:#888;
+              padding-bottom: 0;
+              margin-bottom: 0;
+            }
+
+            .product_character{
+              background:#fff;
+              border-radius:4px;
+              box-shadow: 3px 3px 3px;
+            }
+
+            .character_item{
+              margin:0px 20px;
+              padding-bottom:10px;
+            }
+
+        </style>
+
+    </head>
+    <body onload= "load()">
+
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>   
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img style="display:block;width:100%;" src="../img/0-1.jpg" alt="First slide">
+          </div>
+          <div class="item">
+            <img style="display:block;width:100%;" src="../img/0-2.jpg" alt="Second slide">
+          </div>
+          <div class="item">
+            <img style="display:block;width:100%;" src="../img/0-3.jpg" alt="Third slide">
+          </div>
+          <div class="item">
+            <img style="display:block;width:100%;" src="../img/0-4.jpg" alt="Fourth slide">
+          </div>
+        </div>
+       </div>
+
+
+        <!--菜单条-->
+        <nav class="navbar navbar-default" role="navigation">
+          <ul class="nav navbar-nav">
+
+            <li style = "margin-bottom:0;maring-top:0;" id="tag1" class="active">
+              <a href="#" onclick="switchTag('tag1','content1');this.blur();">选购指南</a>
+            </li>
+            <li style = "margin-bottom:0;maring-top:0;" id="tag2">
+              <a href="#" onclick="switchTag('tag2','content2');this.blur();">产品列表</a>
+            </li>
+            <li style = "margin-bottom:0;maring-top:0;" id="tag0">
+              <a href="../index.html">回首页</a>
+            </li>
+          </ul>
+
+        </nav>
+
+   <div id="content1" style="background: #0b7;margin-top:-20px;padding-top:5px;">
+
+    <ul style="margin-top:10px;" class="list-group product_character">
+
+        <li class="character_item" >
+          <div style="text-align:center;" >
+            <img style="width:80px;" src="../img/feature/severe.jpg">
+            <h5>重疾保障</h5>
+          </div>
+
+          <p style="margin-bottom:0px;font-size:1.1em;">保障期限：
+             <input id="guide_insurance_period1" type="checkbox" onclick="guideInsurancePeriod(1)">60岁，70岁还是
+             <input id="guide_insurance_period2" type="checkbox" onclick="guideInsurancePeriod(2)">保终身？   
+          </p>
+
+          <p class="info"><span class="glyphicon glyphicon-info-sign"></span>温馨提示：人在50岁后比较难买重疾保险、或者费率高。满足本条件的重疾险有：</p>
+          <span id="guide_insurance_period"></span>
+              
+        </li>
+
+        <li class="character_item">
+          <p style="margin-bottom:0px;font-size:1.1em;">
+          赔付次数：
+          <input id="guide_severe_times1" type="checkbox" onclick="guideSevereTimes(1)"> 1次，还是
+          <input id="guide_severe_times2" type="checkbox" onclick="guideSevereTimes(2)"> 2-3次？   
+          </p>
+
+          <p class="info"><span class="glyphicon glyphicon-info-sign"></span>温馨提示：赔付2-3次均是分组，同组疾病不能赔付2次。多次赔付，保费比单次赔付的平均费率增加。满足本条件的重疾险有：</p>
+          
+          <span id="guide_severe_times"></span>
+              
+        </li>  
+
+        <li class="character_item">
+         <p style="margin-bottom:0px;font-size:1.1em;">保障范围：
+         <input id="guide_severe_num1" type="checkbox" onclick="guideSevereNum(1)">不少于60种，
+         <input id="guide_severe_num2" type="checkbox" onclick="guideSevereNum(2)">80种，
+         <input id="guide_severe_num3" type="checkbox" onclick="guideSevereNum(3)">不少于100种？   
+          </p>
+
+          <p class="info"><span style="margin-bottom:0px;" class="glyphicon glyphicon-info-sign"></span>温馨提示：保监会包括的25种重疾，已覆盖重疾80%风险；疾病种类越多，保费会适当有所增加。满足本条件的重疾险有：</p>
+          
+          <span id="guide_severe_num" ></span>
+              
+        </li>  
+    </ul>
+
+    <ul class="list-group product_character">    
+        <li class="character_item">
+
+          <div style="text-align:center;" >
+            <img style="width:80px;" src="../img/feature/mild.jpg">
+            <h5>轻疾保障</h5>
+          </div>
+          <p style="margin-bottom:0px;font-size:1.1em;">赔付次数：
+         <input id="guide_mild_times1" type="checkbox" onclick="guideMildTimes(1)">1次，
+         <input id="guide_mild_times2" type="checkbox" onclick="guideMildTimes(2)">2-3次，
+         <input id="guide_mild_times3" type="checkbox" onclick="guideMildTimes(3)">5次？   
+          </p>
+
+          <p class="info"><span class="glyphicon glyphicon-info-sign"></span>温馨提示：轻症为额外赔付，不占重疾保额，多次赔付，则可应对意外情况；多1次赔付，费率略微增加。满足本条件的重疾险有：</p> 
+          <span id="guide_mild_times"></span>
+             
+        </li>     
+    </ul>
+
+    <ul class="list-group product_character">    
+        <li class="character_item">
+
+          <div style="text-align:center;" >
+            <img style="width:80px;" src="../img/feature/rainbow.jpg">
+            <h5>增值服务</h5>
+          </div>
+          <p style="margin-bottom:0px;font-size:1.1em;">绿色通道服务：
+         <input id="guide_green_channel1" type="checkbox" onclick="guideGreenChannel(1)">需要
+         <input id="guide_green_channel2" type="checkbox" onclick="guideGreenChannel(2)">不需要  
+          </p>
+
+          <p class="info"><span class="glyphicon glyphicon-info-sign"></span>温馨提示：绿通服务可对接专家和医疗服务。泰康公司绿通享有盛名，长城人寿及所推荐的产品保费达到一定规模同时推荐绿通服务。满足本条件的重疾险有：</p>
+          
+          <span id="guide_green_channel"></span>
+             
+        </li>
+
+    </ul>
+
+    <ul class="list-group product_character">   
+
+        <li class="character_item">
+
+          <div style="text-align:center;" >
+            <img style="width:80px;" src="../img/feature/free.jpg">
+            <h5>保费豁免</h5>
+          </div>
+
+          <p style="margin-bottom:0px;font-size:1.1em;">投保人豁免：
+          <input id="guide_holder_exemption1" type="checkbox" onclick="guideHolderExemption(1)">需要
+          <input id="guide_holder_exemption2" type="checkbox" onclick="guideHolderExemption(2)">不需要  
+          </p>
+
+          <p class="info"><span class="glyphicon glyphicon-info-sign"></span>温馨提示：投保人罹患指定的轻症或重疾、身故豁免保单后续保费；附加投保人豁免需要适当附加保费，但对于家庭的保障来说，则更为充分。满足本条件的重疾险有：</p>
+          
+          <span id="guide_holder_exemption"></span>
+              
+        </li>
+
+        <li class="character_item">
+          <p style="margin-bottom:0px;font-size:1.1em;">轻症豁免：
+          <input id="guide_mild_case_exemption1" type="checkbox" onclick="guideMildCaseExemption(1)">需要
+          <input id="guide_mild_case_exemption2" type="checkbox" onclick="guideMildCaseExemption(2)">不需要   
+          </p>
+
+          <p class="info"><span class="glyphicon glyphicon-info-sign"></span>温馨提示：轻症豁免，若被保险人罹患轻症，则豁免本保单后续保费，假如缴费期20年的保单，投保第二年被确诊患有合同指定的轻症，则豁免后续保费。满足本条件的重疾险有：</p>
+         
+          <span id="guide_mild_case_exemption"></span>
+            
+        </li>  
+
+    </ul>
+
+    <!--div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">满足以上所有条件的保险产品包括：</h3>
+        </div>
+        <div id="satisfied_product_list" class="panel-body">
+            
+        </div>
+    </div-->
+
+   </div>   <!--content1-->
+
+
+    <!--产品列表-->   
+    <div id = "content2" style="background: #0b7;margin-top:-20px;" class="hidecontent">
+
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span12">
+
+            <ul id="product_list" class="thumbnails">
+              
+              <!--li class="span4">
+                <div class="thumbnail">
+                  <img alt="300x200" src="../img/insurance_diseases/leankang.png" />
+                  <div class="caption">
+                    <h5>
+                      乐安康 <small>泰康人寿</small>
+                    </h5>
+                    <p>
+                      ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                      ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                      ★ 享泰康绿通服务，解决百姓看病难问题。
+                    </p>
+                    <p>
+                      <a href="#" class="btn btn-primary btn-sm" role="button">保费测算
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                      </a>
+                    </p>
+
+                  </div>
+                </div>
+              </li-->
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+    </div>  <!--content2-->
+
+</body>
+</html>
+

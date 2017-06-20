@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>怡得保商城</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../bootstrap/css/paper/bootstrap.css">
+        <link rel="stylesheet" href="../../utils/mobisscroll/css/mobiscroll.custom-3.0.0-beta2.min.css">
+        <link rel="stylesheet" href="../../utils/ioselect/iosSelect.css">
+        <link rel="stylesheet" href="../res/fonts/iconfont.css">
+        <link rel="stylesheet" href="../template/css/ydb.css">
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../utils/mobisscroll/js/mobiscroll.custom-3.0.0-beta2.min.js"></script>
+        <script src="../../utils/ioselect/iscroll.js"></script>
+        <script src="../../utils/ioselect/iosSelect.js"></script>
+        <script src="../js/ydb.js"></script>
+        <script src="premium_calculation.js"></script>
+        <style>
+            body{background: #0892B5;}
+    .p-rel{position: relative}
+    .product_img {
+    width:75%;
+    margin-bottom:15px;
+    }
+    ul {list-style:none;}
+      .rule-box, .case-box, .QA-box {
+      position: fixed;
+      left: 0;
+      bottom: -500px;
+      width: 100%;
+      height: 500px;
+      background: #fff;
+      z-index: 150;
+      overflow-y: scroll;
+      }
+
+      .rule-close-btn, .case-close-btn, .QA-close-btn {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 0.5rem 0;
+        font-size: 1.6rem;
+        color: #323232;
+        text-align: center;
+        background: #f8f8f8;
+        border-top: 1px solid #eee;
+      }
+
+</style>
+    </head>
+    <body onload="load()" style="width:100%;">
+        <img src="../img/personal_value/header1.jpg" style="width:100%;" alt="">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <br />
+                <div style="margin-top:-85px;">
+                    <div class="form-group">
+                        <label style="font-size:1.65rem;text-align:right;margin-top:4px;" class="control-label col-sm-5">被保人：</label>
+                        <div class="col-sm-4">
+                            <input type="hidden" name="su_id" id="suId" value="">
+                            <input type="hidden" name="wei_id" id="weiId" value="">
+                            <input id="showGeneral" onfocus="this.blur();" style="text-align:center;" class="form-control" value="男-20岁">
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div style="background:#fff;margin:15px -15px 15px -15px;padding-bottom:0px;padding-top:20px;">
+                    <!--方案-->
+                    <h6><i style="color:#0f3e5f;font-size:1.6rem;margin-right:3px;margin-left:3px;" class="hz-icon-selection"></i> <label class="control-label">选择的产品：</label><text id="products_selected"></text></h6>
+                    <div id="scheme"> </div>
+                </div>
+                <!--保障内容-->
+                <div style="background:#fff;margin:10px -15px 10px -15px;padding-top:10px;" class="hidecontent" id="insurance_detail">
+                    <div style="margin-top:0px;padding-top:0px;" class="page-header">
+                        <h6><i style="color:#0f3e5f;font-size:1.6rem;margin:0px 3px 0px 3px;" class="hz-icon-information"></i>保障内容</h6>
+                    </div>
+                    <table class="table">
+                        <tbody id="insurance_content" class="hidecontent">
+                            <tr class="warning">
+                                <td style="width:35%;">保费满期返还：</td>
+                                <td id="t_premium_return">无</td>
+                            </tr>
+                            <tr>
+                                <td style="width:35%;">疾病身故赔付：</td>
+                                <td id="t_sickness_death_payment">无</td>
+                            </tr>
+                            <tr class="warning">
+                                <td style="width:35%;">一般意外赔付：</td>
+                                <td id="t_general_accident_payment">无</td>
+                            </tr>
+                            <tr>
+                                <td style="width:35%;">交通意外赔付：</td>
+                                <td id="t_traffic_accident_payment">无</td>
+                            </tr>
+                            <tr class="warning">
+                                <td style="width:35%;">驾乘意外赔付：</td>
+                                <td id="t_driving_accident_payment">无</td>
+                            </tr>
+                            <tr>
+                                <td style="width:35%;">自然灾害赔付：</td>
+                                <td id="t_natural_disaster_payment"></td>
+                            </tr>
+                            <tr class="warning">
+                                <td style="width:35%;">航空意外赔付：</td>
+                                <td id="t_aircraft_accident_payment">无</td>
+                            </tr>
+                            <tr>
+                                <td style="width:35%;">意外住院津贴：</td>
+                                <td id="t_medical_expense_payment">102.4万元</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--row-fluid-->
+            <div align="center" style="margin:20px -15px 20px -15px;background:#fff;padding:15px 0px 10px 10px;">
+                <img src="../img/promise.png" style="width:90%;" alt="">
+            </div>
+            <div style="margin:0px -15px 0px -15px;" class="main-bd-options">
+                <ul style="padding:0;margin:0;">
+                    <li style="width:25%;">
+                        <a id="company_brief" class="diy_color f26" data-target="#myModal" role="button" data-toggle="modal"><i class="hz-icon-button1"></i><br />公司简介</a>
+                    </li>
+                    <li style="width: 25%;">
+                        <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button2"></i><br />投保规则</a>
+                    </li>
+                    <li style="width: 25%;">
+                        <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button3"></i><br />典型案例</a>
+                    </li>
+                    <li style="width: 25%;" class="last-li">
+                        <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button4"></i><br />常见问题</a>
+                    </li>
+                </ul>
+            </div>
+            <br />
+            <br />
+        </div>
+        <!--container-fluid-->
+        <view class="tabBar">
+            <text id="bar_title3" class="name">保费总额：年投入￥</text>
+            <text id="bar_value3" class="totalPrice"></text>
+            <text id="bar_unit3" class="name">元</text>
+            <view id="bar_second3" class="nextStep">查看保障内容</view>
+        </view>
+
+
+        <div style="margin-top:150px;" class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div style="padding-top:20px;text-align: center;" class="modal-content">
+                <div id="companies_container" style= "text-align: center;">
+                    <!--p><a style="width:80%;" class="btn btn-warning">查看弘康人寿公司介绍</a></p>
+
+                    <p><a style="width:80%;" class="btn btn-warning">查看长城人寿公司介绍</a></p-->
+                </div>
+                <p><a style="width:80%;" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a> </p>
+            </div>
+        </div>
+
+
+        <div class="rule-box p-rel">
+            <div id="rule_content">
+                <!--div style="margin:0;padding-bottom:0px;" class="page-header">
+                    <h5 style="text-align:center;padding-top:0px;">投保规则</h5>
+                </div>
+                <div>
+                    <p>这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。</p>
+                    <p>这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。</p>
+                    <p>这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。</p>
+                </div-->                                               
+            </div>
+            <div class="rule-close-btn">关 闭</div>
+        </div>
+        <div class="case-box p-rel">
+            <div id="case_container">
+                <!--div style="margin:0;padding-bottom:0px;" class="page-header">
+                    <h5 style="text-align:center;padding-top:0px;">典型案例</h5>
+                </div>
+                <h6><i style="font-size:1.8em;color:#FF6100;" class="hz-icon-insure"></i><span style="font-size:1.25em;">投保</span></h6>
+                <p>这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。</p>
+                <h6><i style="font-size:1.8em;color:#228B22;" class="hz-icon-accident"></i><span style="font-size:1.25em;">出险</span></h6>
+                <p>这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。</p>
+                <h6><i style="font-size:1.8em;color:#ED9121;" class="hz-icon-payment"></i><span style="font-size:1.25em;">理赔</span></h6>
+                <p>这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。</p-->
+            </div>
+
+            <div class="case-close-btn">关 闭</div>
+        </div>
+
+        <div class="QA-box p-rel">
+            <div style="margin:0;padding-bottom:0px;" class="page-header">
+                <h5 style="text-align:center;padding-top:0px;">常见问题</h5>
+            </div>
+
+            <div id="QA_content">
+            </div>
+
+            <div class="QA-close-btn">关 闭</div>
+        </div>
+        <!--遮罩-->
+        <div class="body-shade" style="display: none"></div>
+    </body>
+</html>
+<script>
+    /*投保规则弹框*/
+    $('.hz-icon-button2').parent().click(function() {
+
+        if(!rule_initialized)
+            InitRules();
+
+        $('.rule-box').animate({ 'bottom': 0 }, 500);
+        $('.body-shade').show();
+        $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+    })
+
+    /*投保案例弹框*/
+    $('.hz-icon-button3').parent().click(function() {
+
+        if(!case_initialized)
+            InitCases();
+
+        $('.case-box').animate({ 'bottom': 0 }, 500);
+        $('.body-shade').show();
+        $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+    })
+
+    /*常见问题弹框*/
+    $('.hz-icon-button4').parent().click(function() {
+
+        if(!QA_initialized)
+            InitQAFromDB();
+
+        $('.QA-box').animate({ 'bottom': 0 }, 500);
+        $('.body-shade').show();
+        $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+    })
+
+    $('.rule-close-btn').click(function() {
+        $(this).parent().animate({ 'bottom': '-500px' }, 300);
+        //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+        $('.body-shade').hide();
+        $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+        window.location.href = "#bottom";
+    })
+    $('.case-close-btn').click(function() {
+        $(this).parent().animate({ 'bottom': '-500px' }, 300);
+        //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+        $('.body-shade').hide();
+        $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+        window.location.href = "#bottom";
+    })
+    $('.QA-close-btn').click(function() {         
+        $(this).parent().animate({ 'bottom': '-500px' }, 300);
+        //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+        $('.body-shade').hide();
+        $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+        window.location.href = "#bottom";
+    })
+</script>

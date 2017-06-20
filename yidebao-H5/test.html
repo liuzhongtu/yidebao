@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Examples for bootstrap-slider plugin">
+        <meta name="author" content="">
+        <title>Slider for Bootstrap Examples Page</title>
+        <!-- core CSS -->
+         <link rel="stylesheet" href="../bootstrap/css/paper/bootstrap.css">
+        <link href="http://seiyria.com/bootstrap-slider/dependencies/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://seiyria.com/bootstrap-slider/css/bootstrap-slider.css" rel="stylesheet">
+        <script type='text/javascript' src="http://seiyria.com/bootstrap-slider/dependencies/js/jquery.min.js"></script>
+        <script type='text/javascript' src="http://seiyria.com/bootstrap-slider/js/bootstrap-slider.js"></script>
+        <script type='text/javascript'>
+            $(document).ready(function() {
+                /* Example 1 */
+                $('#ex1').slider({
+                    formatter: function(value) {
+                        return 'Current value: ' + value;
+                    }
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        <div class="container" style="height:100px;overflow-y:scroll;" >
+
+            <!--<div class="examples">
+                <div id="example-1">
+                    
+                    <div>
+                        <input id="ex1" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                    </div>
+                </div>
+                    
+                </div> --> <!-- /examples -->
+            <table class="table table-striped table-hover table-bordered scrolltable"> 
+                 <thead> 
+                     <tr class="danger"> 
+                      <th>表头1</th> 
+                      <th>表头2</th> 
+                  
+                     </tr> 
+                 </thead> 
+                 <tbody  > 
+                     <tr class="success"> 
+                      <td>第1行第1列</td> 
+                      <td>第1行第2列</td> 
+                     </tr> 
+                     <tr class="active"> 
+                      <td>第2行第1列</td> 
+                      <td>第2行第2列</td> 
+                     </tr> 
+                     <tr class="info"> 
+                      <td>第3行第1列</td> 
+                      <td>第3行第2列</td> 
+                     </tr> 
+                 </tbody> 
+             </table> 
+         </div> <!-- /container -->
+        
+            </body>
+        </html>

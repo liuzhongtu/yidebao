@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>怡得保商城</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../bootstrap/css/paper/bootstrap.css">
+        <link rel="stylesheet" href="../res/fonts/iconfont.css"> 
+        <link rel="stylesheet" href="../template/css/ydb.css">
+        <link rel="stylesheet" href="../../utils/mobisscroll/css/mobiscroll.custom-3.0.0-beta2.min.css">
+        <link rel="stylesheet" href="../../utils/bootstrap-slider/bootstrap-slider.css">
+        <script src="../../bootstrap/js/jquery.min.js"></script>         
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../utils/mobisscroll/js/mobiscroll.custom-3.0.0-beta2.min.js"></script>
+        <script type='text/javascript' src="../../utils/bootstrap-slider/bootstrap-slider.js"></script>
+        <script src="premium_calculation_insurance_cashflow.js"></script>
+        <script src="../js/ydb.js"></script>         
+        <script>
+        var age_slider;
+ 
+        $(document).ready(function() {
+
+            age_slider = new Slider('#ex1', {});  
+
+            var _age_list = document.getElementById("age_list");
+            for (var i = 30; i <= 100; i++) {
+                 _age_list.add(new Option(i.toString(),i));
+            };
+        });
+      
+
+        function age_change()
+        {
+            var slide_age = age_slider.getValue();
+            $("#age_list").val(slide_age);
+            calcUniveralAccount();
+        }
+
+        function age_item_change(s)
+        {
+            var slide_age = $("#age_list").val();
+            age_slider.setValue(slide_age);
+            age_change();
+        }
+
+        //  万能账户
+        function minus_click(s)
+        {
+            var slide_age = age_slider.getValue();
+
+            if(slide_age<=30)
+                slide_age = 30;
+            else
+                slide_age--;
+
+            age_slider.setValue(slide_age) ;
+            age_change();
+        }
+
+        function plus_click(s)
+        {
+           var slide_age = age_slider.getValue();
+           if(slide_age>=100)
+                slide_age = 100;
+            else
+                slide_age++;
+
+            age_slider.setValue(slide_age) ;
+            age_change();
+        }        
+
+        $(function () {
+            var currYear = (new Date()).getFullYear();  
+            var opt={}; 
+            opt.date = {preset : 'date'};
+            opt.default = {  
+                theme: 'ios', //皮肤样式  
+                display: 'center', //显示方式   
+                mode: 'scroller', //日期选择模式  
+                dateFormat: 'yyyy-mm-dd',  
+                lang: 'zh',  
+                showNow: true,  
+                nowText: "今天",  
+                startYear: currYear - 60, //开始年份  
+                endYear: currYear //结束年份
+            };
+
+            $("#birthday").mobiscroll($.extend(opt['date'], opt['default']));//年月日型  
+        });
+    </script>
+        <style>
+            body{background: #36C385;}
+    .diy_color {
+    color: #fe0202 !important
+    }
+    .f26 {
+    font-size: 0.26rem
+    }
+    .coverage_detail{
+    background:#fff;
+    border-radius:4px;
+    box-shadow: 3px 3px 3px;
+    }
+    ul {list-style:none;}
+    .insurePlan, .sj1 {
+    position: relative
+    }
+    .insurePlan {
+    font-size: 1.4rem
+    }
+    .insurePlan ul {
+    margin-bottom: 1.8rem
+    }
+    .insurePlan .sj1, .insurePlan .sj2, .insurePlan .sj3, .insurePlan .sj4 {
+    margin-bottom: .6rem
+    }
+    .insurePlan span {
+    color: #36C385;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0 .6rem
+    }
+    .sj1, .sj2 {
+    color: #333
+    }
+    .sj1 {
+    font-size: 1.6rem;
+    font-weight: 500
+    }
+    .sj2, .sj3 {
+    font-weight: lighter;
+    position: relative
+    }
+    .sj2 {
+    font-size: 1.5rem
+    }
+    .sj2:before {
+    border-radius: 50%;
+    color: #36C385
+    }
+    .sj2.no:before {
+    content: none
+    }
+    .sj3 {
+    color: #999;
+    font-size: 1.4rem
+    }
+    .sj3 b {
+    font-weight: 700;
+    color: #36C385
+    }
+    .insurePlan .sj1, .insurePlan .sj2, .insurePlan .sj3, .insurePlan .sj4 {
+    margin-bottom: .6rem
+    }
+    .plan-block {
+    position: relative;
+    width: 96%;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 4px 4px 4px rgba(44, 45, 70, .1);
+    margin:-10px auto;
+    }
+    .plan-block dt {
+    position: relative;
+    margin-bottom: 1.2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5e5e5;
+    color: #333;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600
+    }
+    .plan-block dl {
+    padding: 0 1.5rem 1.5rem
+    }
+    .plan-block dd {
+    line-height: 2.2rem
+    }
+    .sj2:before, .sj4:before {
+    border: 3px solid #36C385;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    display: inline-block
+    }
+    .sj2:before {
+    content: ' ';
+    vertical-align: middle;
+    }
+    
+    .rule-box, .case-box, .QA-box, .illustration-box{
+    position: fixed;
+    left: 0;
+    bottom: -500px;
+    width: 100%;
+    height: 500px;
+    background: #fff;
+    z-index: 150;
+    }
+    .rule-close-btn, .case-close-btn, .QA-close-btn, .illustration-close-btn{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 1.6rem;
+    color: #323232;
+    text-align: center;
+    background: #f8f8f8;
+    border-top: 1px solid #eee;
+    }
+    .minus, .plus {
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    font-size: 2rem;
+    top:3rem;
+    /*bottom: 2.6rem;*/
+    }
+
+    .low-rate-btn{
+    margin-left:0;margin-right:0.1rem;width:31%;
+    }
+    .mid-rate-btn{
+    margin: auto 0.2rem auto 0.2rem;width:32%;
+    }
+    .high-rate-btn{
+    margin-left:0.1rem;width:31%;
+    }
+    .latest-rate-btn{
+    width:100%;        
+    }
+    .calc-detail-btn{
+    font-size:1rem;padding:1px auto;
+    }
+
+.plan-profit-range {
+    width: 90%;
+    margin: .5rem auto 0;
+    position: relative;
+    height: 3rem
+}
+.plan-profit-range .minus, .plan-profit-range .plus {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    font-size: 3rem;
+    z-index: 2
+}
+.plan-profit-range .minus {
+    left: -1rem
+}
+.plan-profit-range .plus {
+    right: -1rem
+}
+
+
+    /* Example 1 custom styles */
+    #ex1Slider .slider-selection {
+    background: #36C385;
+    }
+
+</style>
+    </head>
+    <body onload="load()">
+        <img id="product_img" style="width:100%;" alt="">
+        <section class="plan-block">
+            <dl class="insurePlan">
+                <dt>选择的产品：<span id="products_selected" style="margin:0;"></span></dt>
+                <table class="tbl">
+                    <tbody>
+                        <tr>
+                            <td class="text-left tbl_line"><b>性别:</b></td>
+                            <td class="text-left tbl_line">
+                                <label class="checkbox-inline">
+                                    <input id="gender_male" type="radio" name="gender" value="male" checked="checked" onclick="genderChange(this)" />男 
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input id="gender_female" type="radio" name="gender" value="female" onclick="genderChange(this)" />女           
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left tbl_noline"><b>保额:</b></td>
+                            <td class="text-left tbl_noline">
+                                <select style="font-size:1em;" class="form-control" id="coverage" onchange="coverageChange(this.options[this.options.selectedIndex].value)"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height:36px;padding-top:10px;font-size:1.2rem;" class="text-left tbl_full_line">
+                                满足养老缺口的最低保额为
+                                <span id="min_coverage" style="font-size:1.5rem;">10万元</span>
+                                <button id="illustration" class="btn-xs btn-warning" style="font-size:1rem;padding:1px;">计算说明</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height:100%;" class="text-left tbl_line"><b>出生日期:</b></td>
+                            <td style="height:36px;" class="text-left tbl_line">
+                                <input id="birthday" style="font-size:1em;" value="1999-01-01" onselect="dateChange()" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left tbl_line"><b>缴费年限:</b></td>
+                            <td class="text-left tbl_line">
+                                <select style="font-size:1em;" class="form-control" id="period" onchange="periodChange(this.options[this.options.selectedIndex].value)"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left tbl_line"><b>保障期间:</b></td>
+                            <td class="text-left tbl_line">
+                                <select style="font-size:1em;" class="form-control" id="insurance_period" onchange="insurancePeriodChange(this.options[this.options.selectedIndex].value)"></select>
+                            </td>
+                        </tr>                         
+                    </tbody>
+                </table>
+            </dl>
+        </section>
+        <section class="plan-block">
+            <dl class="insurePlan">
+                <dt>保障详情</dt>
+                <dd class="sj1">生存金</dd>
+                <dd id="immediate_payment" class="sj2">
+                    保单生效立即领 
+                    <span id="immediate_payment_value">5000</span>元
+                </dd>
+                <dd class="sj2">
+                    <text id="start_year"></text>  到59岁每年领 
+                    <span id="annual_payment_before_60">5000</span>元
+                </dd>
+                <dd class="sj2">
+                    60岁到80岁每年领 
+                    <span id="annual_payment_after_60">5000</span>元
+                </dd>
+                <dd class="sj3">
+                    <text id="is_immediate_payment">即交即领，</text> 年年返，退休更多返
+                </dd>
+                <dd class="sj1">满期金</dd>
+                <dd class="sj2">
+                    80岁返还 
+                    <span id="birthday80_gift">5000</span>元
+                </dd>
+                <dd>
+                    祝寿金给付，资金无忧，乐享晚年
+                </dd>
+                <dd class="sj1">身故/高残金</dd>
+                <dd class="sj2">
+                    180天内返还 
+                    <span id="death_payment">5000</span>元
+                </dd>
+                <dd class="sj2">
+                    180天后返还已交保费与现金价值的较大者及万能账户余额
+                </dd>
+            </dl>
+        </section>
+        <section style="margin-bottom:15px;" class="plan-block">
+            <dl style="margin-bottom:0;" class="insurePlan">
+                <dt>万能账户稳增值</dt>
+                <p>
+                    以上所有返还金自动转入万能账户，日复利月结算，下有保底（保底年化3.0%）、上不封顶（官方公布近三年平均结算利率年化利率4.8%），畅享财富二次增值。</p>
+                <div style="text-align:center;">
+                    <p style="margin-bottom:0;color:#999;">选择不同的结算利率查看万能账户</p> 
+                </div>
+            </dl>
+            <dl>
+                <p style="display:inline;">
+                <button onclick="low_rate()" class="btn btn-default low-rate-btn">低（3%）</button>
+                <button onclick="mid_rate()" class="btn btn-default mid-rate-btn">中（4.5%）</button>
+                <button onclick="high_rate()" class="btn btn-default high-rate-btn">高（6%）</button>
+                </p>
+                <p style="margin-top:10px;">
+                <button onclick="latest_rate()" class="btn btn-warning latest-rate-btn">近三年平均结算利率4.8%</button>
+                </p>
+                <article style="margin-bottom:0px;" class="age-range">
+                    <div style="text-align:center;maring:10px 0 10px 0; border-radius: 0.5rem;border:1px solid #36C385;">
+                        被保人在
+                            <b id="age-select">&nbsp; &nbsp;
+                                <select id="age_list" onchange="age_item_change(this.options[this.options.selectedIndex].value)">
+                                </select>
+                            </b> &nbsp; &nbsp;岁时
+                        <br/>万能账户价值：<b id="universal_account_value"></b> 万元
+                    </div>
+
+                    <ul style=" list-style-type: none;margin:0;padding:0;" >
+                        <li style="display: inline-block;margin:0 10px 0 0px;padding:0;" class="minus" onclick="minus_click()">－</div>
+                        <li style="display: inline-block;margin:0;padding:0;">
+                            <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="30" data-slider-max="100" data-slider-step="1" data-slider-value="30" onchange="age_change()" />
+                        </li>
+                        <li style="display: inline-block;margin:0 0 0 5px;padding:0;" class="plus"  onclick="plus_click()">＋</div>
+                    </ul>   
+
+                    <div style="text-align:center;">
+                        <p style="margin-bottom:0;color:#999;">拖动按钮查看不同年龄下的保单利益</p> 
+                    </div>
+
+                </article>
+            </dl>
+        </section>
+        <section style="margin-bottom:15px;" class="plan-block">
+            <dl style="margin-bottom:0;" class="insurePlan">
+                <dt>养老无忧</dt>
+                <div class="form-group">
+                  假定自：
+                  <select style="width:50px;" id = "start_age" onchange="startAgeChange(this.options[this.options.selectedIndex].value)">
+                    <option value="55">55岁</option>
+                    <option value="60">60岁</option>
+                    <option value="65">65岁</option>
+                  </select>
+                  岁开始领取养老金，到
+                  <select style="width:60px;" id = "end_age" onchange="endAgeChange(this.options[this.options.selectedIndex].value)">
+                    <option value="80">80岁</option>
+                    <option value="85" selected="selected">85岁</option>
+                    <option value="90">90岁</option>
+                    <option value="100">100岁</option>
+                  </select> ，每年可以领取<span id="annuity">_____</span>元养老金（万能险利率以4.5%计），尊享无忧养老。                     
+                </div> 
+           </dl>
+        </section>        
+        <div align="center" style="margin:10px 0px;background:#fff;padding:15px 0px 10px 10px;">
+            <img src="../img/promise.png" style="width:90%;" alt=""> 
+        </div>
+        <div class="main-bd-options">
+            <ul style="padding:0;margin:0;">
+                <li style="width: 25%;">
+                    <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button1"></i><br />公司简介</a>
+                </li>
+                <li style="width: 25%;">
+                    <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button2"></i><br />投保规则</a>
+                </li>
+                <li style="width: 25%;">
+                    <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button3"></i><br />典型案例</a>
+                </li>
+                <li style="width: 25%;" class="last-li">
+                    <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button4"></i><br />常见问题</a>
+                </lsi>
+            </ul>             
+        </div>         
+        <br />
+        <br />
+        <view class="tabBar">
+            <text class="name">保费：￥</text>
+            <text class="totalPrice" id="price_per_year"></text>
+            <text class="name">/年  起</text>
+            <view class="nextStep">立即购买</view>
+        </view>         
+        <div class="illustration-box p-rel">
+            <div style="margin:0;padding-bottom:0px;" class="page-header">
+                <h5 style="text-align:center;padding-top:0px;">计算说明</h5>
+            </div>
+            <div style="padding-left:20px;padding-right:20px;padding-top:15px;">
+                <p><span class="glyphicon glyphicon-star-empty"></span>
+                    投保人年龄 <span id="age"></span>岁，月收入 <span id="income"></span>元。希望退休后生活消费不低于目前收入的 <span id="level"></span> %。</p>
+                <p> <span class="glyphicon glyphicon-star-empty"></span><span id="ss">有</span>社保<span id="ss_detail">
+                        ，社保缴纳年限<span id="ss_average"></span>年，
+                        平均社保缴纳基数<span id="ss_base"></span>元，
+                        所在城市平均工资<span id="ss_year"></span>元。
+                        假定平均工资以每年5%递增，我可领取的退休工资约是<span id="ss_salary"></span>元。</span></p>
+                <p> <span class="glyphicon glyphicon-star-empty"></span>
+                    家族同性人均寿命<span id="gender_age"></span>岁，假定每过5年，平均寿命增长1年，我的可预期寿命<span id="expected_age"></span>岁。
+                按3%通胀率计算，从退休后算起，我的养老金缺口为<span id="gap"></span>万元。<a class="btn-xs btn-success" style="font-size:1rem;padding:3px auto;" href="insurance_endowment.htm">重新估算</a></p>
+            </div>
+            <div class="rule-close-btn">关 闭</div>             
+        </div>         
+        <div class="rule-box p-rel">
+            <div style="margin:0;padding-bottom:0px;" class="page-header">
+                <h5 style="text-align:center;padding-top:0px;">投保规则</h5>
+            </div>
+            <div id="rule_content"></div>
+            <div class="rule-close-btn">关 闭</div>             
+        </div>         
+        <div class="case-box p-rel">
+            <div style="margin:0;padding-bottom:0px;" class="page-header">
+                <h5 style="text-align:center;padding-top:0px;">典型案例</h5>
+            </div>
+            <div id="case_content"></div>
+            <div class="case-close-btn">关 闭</div>             
+        </div>         
+        <div class="QA-box p-rel">
+            <div style="margin:0;padding-bottom:0px;" class="page-header">
+                <h5 style="text-align:center;padding-top:0px;">常见问题</h5>
+            </div>
+            <div id="QA_content"></div>
+            <div class="QA-close-btn">关 闭</div>             
+        </div>         
+        <!--遮罩-->         
+        <div class="body-shade" style="display: none"></div>         
+    </body>
+</html>
+<script>
+
+  /*计算说明*/
+$('#illustration').click(function() {
+
+    $('.illustration-box').animate({ 'bottom': 0 }, 500);
+    $('.body-shade').show();
+    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+})
+
+  /*公司简介弹框*/
+$('.hz-icon-button1').parent().click(function() {
+
+    if(company_local_url== ""){
+        InitCompanyUrlFromDB();
+    }
+    else
+      window.location.href = company_local_url;
+ //   window.open(company_local_url);
+})
+
+  /*投保规则弹框*/
+$('.hz-icon-button2').parent().click(function() {
+
+    if(rule_initialized== false){
+        InitRuleFromDB();
+        rule_initialized = true;
+    }
+
+    $('.rule-box').animate({ 'bottom': 0 }, 500);
+    $('.body-shade').show();
+    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+})
+
+/*投保案例弹框*/
+$('.hz-icon-button3').parent().click(function() {
+
+    if(case_initialized== false){
+        InitCaseFromDB();
+        case_initialized = true;
+    }
+
+    $('.case-box').animate({ 'bottom': 0 }, 500);
+    $('.body-shade').show();
+    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+})
+
+/*常见问题弹框*/
+$('.hz-icon-button4').parent().click(function() {
+
+    if(QA_initialized== false){
+        InitQAFromDB();
+        QA_initialized = true;
+    }
+
+    $('.QA-box').animate({ 'bottom': 0 }, 500);
+    $('.body-shade').show();
+    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+})
+
+$('.rule-close-btn').click(function() {
+    $(this).parent().animate({ 'bottom': '-500px' }, 300);
+    $('.body-shade').hide();
+    $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+    window.location.href = "#bottom";
+})
+
+$('.case-close-btn').click(function() {
+    $(this).parent().animate({ 'bottom': '-500px' }, 300);
+    //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+    $('.body-shade').hide();
+    $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+    window.location.href = "#bottom";
+})
+
+$('.QA-close-btn').click(function() {
+    $(this).parent().animate({ 'bottom': '-500px' }, 300);
+    //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+    $('.body-shade').hide();
+    $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+    window.location.href = "#bottom";
+})
+
+</script>

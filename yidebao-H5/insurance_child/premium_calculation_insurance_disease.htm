@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>怡得保商城</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../bootstrap/css/paper/bootstrap.css">
+    <link rel="stylesheet" href="../template/css/ydb.css">
+    <link rel="stylesheet" href="../../utils/mobisscroll/css/mobiscroll.custom-3.0.0-beta2.min.css">
+    <link rel="stylesheet" href="../res/fonts/iconfont.css">
+    <link rel="stylesheet" href="../template/css/ydb.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../utils/mobisscroll/js/mobiscroll.custom-3.0.0-beta2.min.js"></script>
+    <script src="../js/ydb.js"></script>
+    <script src="premium_calculation_insurance_disease.js"></script>
+    <script>
+        $(function () {
+            var currYear = (new Date()).getFullYear();  
+            var opt={}; 
+            opt.date = {preset : 'date'};
+            opt.default = {  
+                theme: 'ios', //皮肤样式  
+                display: 'center', //显示方式   
+                mode: 'scroller', //日期选择模式  
+                dateFormat: 'yyyy-mm-dd',  
+                lang: 'zh',  
+                showNow: true,  
+                nowText: "今天",  
+                startYear: currYear - 60, //开始年份  
+                endYear: currYear //结束年份
+            };
+
+            $("#birthday").mobiscroll($.extend(opt['date'], opt['default']));//年月日型  
+        });
+    </script>
+
+    <style>
+      body{background: #0b7;}
+
+      .diy_color {
+      color: #0b7 !important
+      }
+      .f26 {
+      font-size: 0.26rem
+      }
+
+        .insurePlan, .sj1 {
+        position: relative
+        }
+        .insurePlan {
+        font-size: 1.4rem
+        }
+        .insurePlan ul {
+        margin-bottom: 1.8rem
+        }
+        .insurePlan .sj1, .insurePlan .sj2, .insurePlan .sj3, .insurePlan .sj4 {
+        margin-bottom: .6rem
+        }
+        .insurePlan span {
+        color: #36C385;
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 0 .6rem
+        }
+        .sj1, .sj2 {
+        color: #333
+        }
+        .sj1 {
+        font-size: 1.6rem;
+        font-weight: 500
+        }
+        .sj2, .sj3 {
+        font-weight: lighter;
+        position: relative
+        }
+        .sj2 {
+        font-size: 1.5rem
+        }
+        .sj2:before {
+        border-radius: 50%;
+        color: #36C385
+        }
+        .sj2.no:before {
+        content: none
+        }
+        .sj3 {
+        color: #999;
+        font-size: 1.4rem
+        }
+        .sj3 b {
+        font-weight: 700;
+        color: #36C385
+        }
+        .insurePlan .sj1, .insurePlan .sj2, .insurePlan .sj3, .insurePlan .sj4 {
+        margin-bottom: .6rem
+        }
+        .plan-block {
+        position: relative;
+        width: 96%;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 4px 4px 4px rgba(44, 45, 70, .1);
+        margin:-10px auto;
+        }
+        .plan-block dt {
+        position: relative;
+        margin-bottom: 1.2rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid #e5e5e5;
+        color: #333;
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 600
+        }
+        .plan-block dl {
+        padding: 0 1.5rem 1.5rem
+        }
+        .plan-block dd {
+        line-height: 2.2rem
+        }
+        .sj2:before, .sj4:before {
+        border: 3px solid #36C385;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        display: inline-block
+        }
+        .sj2:before {
+        content: ' ';
+        vertical-align: middle;
+        }
+
+
+      .diseases-box, .rule-box, .case-box, .QA-box{
+      position: fixed;
+      left: 0;
+      bottom: -500px;
+      width: 100%;
+      height: 500px;
+      background: #fff;
+      z-index: 150;
+      overflow-y: scroll;
+      }
+
+      .rule-close-btn, .case-close-btn, .QA-close-btn {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 0.5rem 0;
+        font-size: 1.6rem;
+        color: #323232;
+        text-align: center;
+        background: #f8f8f8;
+        border-top: 1px solid #eee;
+      }
+
+      .diseases-close-btn {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 0.5rem 0;
+        font-size: 1.6rem;
+        color: #323232;
+        text-align: center;
+        background: #f8f8f8;
+        border-top: 1px solid #eee;
+      }
+
+
+      /* li 不换行，宽度根据内容自适应，通过 float 实现 */  
+    .ul_one {margin-left: 20px;padding: 0px;}  
+    .ul_one li {/*float: left;*/margin: 0px 35px 10px 30px;list-style: decimal;}  
+
+    </style>
+
+  </head>
+<body onload="load()">
+
+    <img id="product_img" style="width:100%;" alt="">
+            
+      <section class="plan-block">
+        <dl class="insurePlan">
+          <dt>选择的产品：<span id="products_selected" style="margin:0;"></span></dt>
+          <table class="tbl">
+            <tbody>
+              <tr>
+                <td class="text-left tbl_line"><b>性别:</b></td>
+                <td class="text-left tbl_line">
+                    
+                    <label class ="checkbox-inline">
+                      <input id="gender_male" type="radio" name="gender" value="male" checked = "checked" onclick="genderChange(this)"/>男 
+                    </label>
+                    <label class ="checkbox-inline">
+                      <input id="gender_female" type="radio" name="gender" value="female"  onclick="genderChange(this)"/>女           
+                    </label>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left tbl_line"><b>保额:</b></td>
+                <td class="text-left tbl_line">
+                       <select style="font-size:1em;" class="form-control" id = "coverage" onchange="coverageChange(this.options[this.options.selectedIndex].value)">
+                      </select>
+                </td>
+              </tr>
+              <tr >
+                <td style="height:100%;" class="text-left tbl_line"><b>出生日期:</b></td>
+                <td style="height:36px;" class="text-left tbl_line">
+                    <input id="birthday" style="font-size:1em;" value ="1987-01-01" onselect="dateChange()"/>
+                    <!--input type = "date" style="font-size:1em;" class="form-control"  id= "birthday" value ="1987-01-01" onchange="dateChange()"--> 
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left tbl_line"><b>缴费年限:</b></td>
+                <td class="text-left tbl_line">
+                  <select  style="font-size:1em;" class="form-control" id = "period" onchange="periodChange(this.options[this.options.selectedIndex].value)">
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left tbl_line"><b>保障期间:</b></td>
+                <td class="text-left tbl_line">
+                  <select  style="font-size:1em;" class="form-control" id = "insurance_period" onchange="insurancePeriodChange(this.options[this.options.selectedIndex].value)">
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </dl>
+      </section>
+
+      <section class="plan-block">
+          <dl class="insurePlan">
+              <dt>保障详情</dt>
+
+              <dd class="sj1">疾病保障 <button id="diseases_detail" class="btn-xs btn-primary" style="float:right;">病种</button></dd>
+
+              <dd id="severe_case" class="sj2">
+                  <span id="severe_case_num">70</span>种重疾： 
+                  <span id="severe_case_payment">500000</span>元
+              </dd>
+              <dd id = "mild_case" class="sj2">
+                  <span id="mild_case_num">30</span>种轻疾：
+                  <span id="mild_case_payment">90000</span>元
+              </dd>
+              <dd class="sj3">
+                  重大疾病<span id="severe_case_times">1</span>次给付，轻症疾病<span id="mild_case_times">3</span>次给付。
+              </dd>
+
+              <dd class="sj1">身价保障</dd>
+              <dd id="deformity" class="sj2">
+                  高残保障：
+                  <span id="deformity_payment">500000</span>元
+              </dd>
+              <dd id = "death" class="sj2">
+                  身故保障： 
+                  <span id="death_payment">50000</span>元
+              </dd>
+              <dd id = "final_stage" class="sj2">
+                  终末期保障： 
+                  <span id="final_stage_payment">50000</span>元
+              </dd>              
+              <dd class="sj3">
+                  延续关爱，保证家人生活，免除后顾之忧。身故与重疾只给付一种。
+              </dd>
+
+
+              <dd id="full_term" class="sj1">满期金</dd>
+              <dd id="full_term_payment" class="sj2">
+                  <span id="birthday_gift_age">80</span>岁返还 
+                  <span id="birthday80_gift">5000</span>元
+              </dd>
+              <dd id="full_term_slogon" class="sj3">
+                  祝寿金给付，资金无忧，乐享晚年
+              </dd>
+
+              <dd id ="premium_free" class="sj1">保费豁免</dd>
+              <dd id="mild_free"class="sj2">
+                  轻症豁免：若被保险人罹患轻症，可免除余下保费。
+              </dd>
+              <dd id="holder_free" class="sj2">
+                  投保人豁免：若投保险人罹患轻症或重症，可免除余下保费。
+              </dd>
+
+              <dd id ="green_channel" class="sj1">绿色通道服务</dd>
+              <dd id ="green_channel_detail" class="sj2">
+                  对接专家和高品质医疗服务。
+              </dd>
+             
+          </dl>
+      </section>
+                
+                  <!--p>
+                    一、因下列情形之一导致被保险人患重大疾病的，我们不承担给付保险金的责任；
+                  </p>
+
+                  <ul class="list-unstyled">
+                    <li>（一）投保人对被保险人的故意杀害、故意伤害；</li>
+                    <li>（二）被保险人故意犯罪或抗拒依法采取的刑事强制措施；</li>
+                    <li>（三）被保险人殴斗、故意自伤；</li>
+                    <li>（四）被保险人主动吸食或注射毒品；</li>
+                    <li>（五）被保险人酒后驾驶、无有效驾驶证驾驶或驾驶无有效行驶证的机动车；</li>
+                    <li>（六）战争、军事冲突、暴乱、恐怖活动或武装叛乱（以上行为以政府宣告或认定为准）；</li>
+                    <li>（七）核爆炸、核辐射或核污染；</li>
+                    <li>（八）遗传性疾病、先天性畸形、变形或染色体异常；</li>
+                  </ul>
+
+                  <p> 二、发生上述第（一）种情形导致被保险人患重大疾病的，本合同终止，我们向保险金受益人退还本合同当时的现金价值；</p>
+                  <p>三、发生上述其他情形导致被保险人患重大疾病的，本合同终止，我们向你退还本合同当时的现金价值。</p-->
+
+    <div align="center" style="margin:20px 0px;background:#fff;padding:15px 0px 10px 10px;">
+      <img src="../img/promise.png" style="width:90%;" alt="">      
+    </div>
+
+    <div class="main-bd-options">
+        <ul style="padding:0;margin:0;list-style:none;">
+            <li style="width: 25%;">
+                <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button1"></i><br />公司简介</a>
+            </li>
+            <li style="width: 25%;">
+                <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button2"></i><br />投保规则</a>
+            </li>
+            <li style="width: 25%;">
+                <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button3"></i><br />典型案例</a>
+            </li>
+            <li style="width: 25%;" class="last-li">
+                <a class="diy_color f26" data-role="none" data-ajax="false"><i class="hz-icon-button4"></i><br />常见问题</a>
+            </li>
+        </ul > 
+    </div> 
+    <br />
+    <br />
+
+    <view class="tabBar">
+      <text class="name">保费：￥</text>
+      <text class="totalPrice" id = "price_per_year"></text>
+      <text class="name">/年  起</text>
+      <view class="nextStep">立即购买</view>
+    </view>   
+    
+    <div style = "height:350px;" class="diseases-box p-rel">
+        <div style="margin:0;padding-bottom:0px;" class="page-header">
+            <h5 style="text-align:center;padding-top:0px;">病种详情</h5>
+        </div>
+
+        <br/>
+
+        <div style="text-align:center;" class="col-sm-6">
+          <button id="severe_btn" class="btn-xs btn-primary" onclick="switchTag('severe_btn','severe_content');this.blur();">重疾</button>
+        </div>
+        <div style="text-align:center;" class="col-sm-6">
+          <button id="mild_btn" class="btn-xs btn-default" onclick="switchTag('mild_btn','mild_content');this.blur();">轻症</button>
+        </div>
+
+        <br/>
+        <br/>
+
+        <div id="severe_content">
+            <ul id="severe_case_list"  class="ul_one">
+              <li恶性肿瘤></li>
+              <li>急性心肌梗塞</li>
+              <li>脑中风后遗症</li>
+              <li>重大器官移植术</li>
+              <li>终末期肾病</li>
+              <li>多个肢体缺失</li>
+              <li>急性或亚急性重症肝炎</li>
+              <li>良性脑肿瘤</li>
+              <li>冠状动脉搭桥术</li>
+              <li>慢性肝功能衰竭</li>
+              <li>脑炎或脑膜炎后遗症</li>
+              <li>深度昏迷</li>
+              <li>双耳失聪</li>
+              <li>双目失明</li>
+              <li>瘫痪</li>
+              <li>心脏瓣膜手术</li>
+              <li>严重阿尔茨海默病</li>
+              <li>严重脑损伤</li>
+              <li>严重帕金森病</li>
+              <li>严重Ⅲ度烧伤</li>
+              <li>严重原发性肺动脉高压</li>
+              <li>严重运动神经元病</li>
+              <li>语言能力丧失</li>
+              <li>重型再生障碍性贫血</li>
+              <li>主动脉手术</li>
+            </ul>
+        </div>
+
+        <div id="mild_content" class="hidecontent">
+              <ul id="mild_case_list" class="ul_one" >
+              </ul>              
+        </div>
+
+        <div class="diseases-close-btn">关 闭</div>             
+    </div> 
+
+
+    <div style = "height:350px;" class="rule-box p-rel">
+        <div style="margin:0;padding-bottom:0px;" class="page-header">
+            <h5 style="text-align:center;padding-top:0px;">投保规则</h5>
+        </div>
+
+        <div id="rule_content">
+        </div>
+
+        <div class="rule-close-btn">关 闭</div>             
+    </div> 
+    <div class="case-box p-rel">
+        <div style="margin:0;padding-bottom:0px;" class="page-header">
+            <h5 style="text-align:center;padding-top:0px;">典型案例</h5>
+        </div>
+
+        <div id="case_content">
+        </div>
+
+        <div class="case-close-btn">关 闭</div>             
+    </div> 
+
+    <div class="QA-box p-rel">
+        <div style="margin:0;padding-bottom:0px;" class="page-header">
+            <h5 style="text-align:center;padding-top:0px;">常见问题</h5>
+        </div>
+
+        <div id="QA_content">
+        </div>
+
+        <div class="QA-close-btn">关 闭</div>             
+    </div>         
+    <!--遮罩-->         
+    <div class="body-shade" style="display: none"></div>     
+
+</body>
+
+<script>
+
+
+  /*病种详情*/
+$('#diseases_detail').click(function() {
+
+    $('.diseases-box').animate({ 'bottom': 0 }, 500);
+    $('.body-shade').show();
+    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+})
+
+
+  /*公司简介弹框*/
+$('.hz-icon-button1').parent().click(function() {
+
+    if(company_local_url== ""){
+        InitCompanyUrlFromDB();
+    }
+    else
+      window.location.href = company_local_url;
+ //   window.open(company_local_url);
+})
+
+  /*投保规则弹框*/
+$('.hz-icon-button2').parent().click(function() {
+
+    if(rule_initialized== false){
+        InitRuleFromDB();
+        rule_initialized = true;
+    }
+
+    $('.rule-box').animate({ 'bottom': 0 }, 500);
+    $('.body-shade').show();
+    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+})
+
+/*投保案例弹框*/
+$('.hz-icon-button3').parent().click(function() {
+
+    if(case_initialized== false){
+        InitCaseFromDB();
+        case_initialized = true;
+    }
+
+    $('.case-box').animate({ 'bottom': 0 }, 500);
+    $('.body-shade').show();
+    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+})
+
+/*常见问题弹框*/
+$('.hz-icon-button4').parent().click(function() {
+
+    if(QA_initialized== false){
+        InitQAFromDB();
+        QA_initialized = true;
+    }
+
+    $('.QA-box').animate({ 'bottom': 0 }, 500);
+    $('.body-shade').show();
+    $('body').css({ 'overflow': 'hidden', 'position': 'fixed', 'height': '100%' });
+})
+
+$('.rule-close-btn').click(function() {
+    $(this).parent().animate({ 'bottom': '-500px' }, 300);
+    //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+    $('.body-shade').hide();
+    $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+    window.location.href = "#bottom";
+})
+
+$('.case-close-btn').click(function() {
+    $(this).parent().animate({ 'bottom': '-500px' }, 300);
+    //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+    $('.body-shade').hide();
+    $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+    window.location.href = "#bottom";
+})
+
+$('.QA-close-btn').click(function() {
+    $(this).parent().animate({ 'bottom': '-500px' }, 300);
+    //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+    $('.body-shade').hide();
+    $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+    window.location.href = "#bottom";
+})
+
+$('.diseases-close-btn').click(function() {
+    $(this).parent().animate({ 'bottom': '-500px' }, 300);
+    //$(this).parent().animate({ 'bottom': '-71%' }, 300);
+    $('.body-shade').hide();
+    $('body').css({ 'overflow': 'auto', 'position': 'relative', 'height': '' });
+    window.location.href = "#bottom";
+})
+</script>

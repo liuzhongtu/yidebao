@@ -1,0 +1,440 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>怡得保——成长守护</title>         
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta charset="UTF-8"> 
+        <link rel="stylesheet" href="../../bootstrap/css/paper/bootstrap.css"> 
+        <link rel="stylesheet" href="../template/css/ydb.css">
+        <link rel="stylesheet" href="../../utils/mobisscroll/css/mobiscroll.custom-3.0.0-beta2.min.css"> 
+        <link rel="stylesheet" type="text/css" href="../../utils/tsc_ribbon/tsc_ribbon.css"> 
+        <script src="../../bootstrap/js/jquery.min.js"></script>         
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>         
+        <script src="../../utils/mobisscroll/js/mobiscroll.custom-3.0.0-beta2.min.js"></script>
+        <script src="../js/ydb.js"></script>
+        <script src="insurance_child.js"></script>         
+        <script>
+        $(function () {
+            var currYear = (new Date()).getFullYear();  
+            var opt={}; 
+            opt.date = {preset : 'date'};
+            opt.default = {  
+                theme: 'ios', //皮肤样式  
+                display: 'center', //显示方式   
+                mode: 'scroller', //日期选择模式  
+                dateFormat: 'yyyy-mm-dd',  
+                lang: 'zh',  
+                showNow: true,  
+                nowText: "今天",  
+                startYear: currYear - 60, //开始年份  
+                endYear: currYear //结束年份
+            };
+            $("#birthday").mobiscroll($.extend(opt['date'], opt['default']));//年月日型  
+        });
+    </script>
+        <style>
+            body{background: #669933;}
+    .form-horizontal .control-label {
+    text-align: left;
+    }
+    ul li{  
+    list-style-type:none;  
+    margin:10px 10px 30px 10px;
+    padding:0px;
+    }  
+    ul {
+    margin:0px 10px;
+    padding:0px 10px;
+    }
+    /* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+    /* Carousel base class */
+    .carousel {
+    height: 200px;
+    }
+    /* Since positioning the image, we need to help out the caption */
+    .carousel-caption {
+    z-index: 10;
+    }
+    /* Declare heights because of positioning of img element */
+    .carousel .item {
+    height: 200px;
+    }
+    .carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 200px;
+    }
+    .featurette-divider
+    {
+    margin: 80px 0;
+    }
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+    /* Center align the text within the three columns below the carousel */
+    .marketing .col-lg-4 {
+    margin-bottom: 20px;
+    text-align: center;
+    }
+    .marketing h2 {
+    font-weight: normal;
+    }
+    .marketing .col-lg-4 p {
+    margin-right: 10px;
+    margin-left: 10px;
+    }
+    .no_lspace{
+    padding-left: 0;
+    margin-left :0;
+    }
+    .no_rspace{
+    padding-right: 0;
+    margin-right:0;  
+    }
+    .plan-block {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 4px 4px 4px rgba(44, 45, 70, .1);
+    margin:10px auto;
+    }
+
+    .instruction{
+      margin:0px 10px;font-size:1.2rem;
+    }
+
+    .instruction select
+    {
+      font-size:1.2rem;display:inline;
+    }
+
+    .instruction text
+    {
+      font-size:1.6rem;color:#f0ad4e;text-indent:8px;
+    }
+
+</style>
+    </head>     
+    <body onload="load()"> 
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+            <!-- 轮播（Carousel）指标 -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <!--li data-target="#myCarousel" data-slide-to="3"></li-->
+            </ol>             
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img style="display:block;width:100%;" src="../img/3-2.jpg" alt="First slide">
+                </div>
+                <div class="item">
+                    <img style="display:block;width:100%;" src="../img/3-1.jpg" alt="Second slide">
+                </div>
+                <!--div class="item">
+        <img style="display:block;width:100%;" src="../img/3-1.jpg" alt="Third slide">
+      </div-->
+                <div class="item">
+                    <img style="display:block;width:100%;" src="../img/3-4.jpg" alt="Third slide">
+                </div>
+            </div>
+        </div>
+        <!--菜单条-->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <ul class="nav navbar-nav">
+                <li style="margin:0;" id="tag1" class="active">
+                    <a style="padding-left:8px;padding-right:5px;font-size:1.2rem;" onclick="switchTag('tag1','content1', 'instruction1');this.blur();">重疾</a>
+                </li>
+                <li style="margin:0;" id="tag2">
+                    <a style="padding-left:5px;padding-right:5px;font-size:1.2rem;" onclick="switchTag('tag2','content2', 'instruction2');this.blur();">意外&医疗</a>
+                </li>
+                <li style="margin:0;" id="tag3">
+                    <a style="padding-left:5px;padding-right:5px;font-size:1.2rem;" onclick="switchTag('tag3','content3', 'instruction3');this.blur();">教育/创业</a>
+                </li>
+                <li style="margin:0;" id="tag4">
+                    <a style="padding-left:5px;padding-right:5px;font-size:1.2rem;" onclick="switchTag('tag4','content4', 'instruction4');this.blur();">终身现金流</a>
+                </li>
+                <li style="margin:0;" id="tag0">
+                    <a style="padding-left:5px;padding-right:0;font-size:1.2rem;" href="../index.html">回首页</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="container-fluid" style="margin:0px auto -10px auto;">
+          <div class="row-fluid">
+            <div class="span12">
+  
+              <section class="plan-block">
+                  <form role="form" class="form-horizontal"> 
+                    <div style="padding:10px 10px;font-size:1.2rem;"><b>被保人需求：</b></div>
+
+                      <div style="font-size:1.2rem;" class="form-group"> 
+                        <label class="control-label col-sm-4 no_rspace ">出生日期：</label>                                         
+                        <div class="col-sm-8 no_lspace"> 
+                          <input id="birthday" class="form-control input-sm no_lspace" placeholder="请输入出生日期" onselect="dateChange()" /> 
+                        </div>                                         
+                      </div>                                     
+                      <div style="font-size:1.2rem;" class="form-group"> 
+                        <label class="control-label col-sm-4 no_rspace ">性别:</label>                                         
+                        <div class="col-sm-8 no_lspace"> 
+                          <label class="checkbox-inline">
+                              <input id="gender_male" type="radio" name="gender" value="male" checked="checked" onclick="dateChange(this)" />男 
+                          </label>
+                          <label class="checkbox-inline">
+                              <input id="gender_female" type="radio" name="gender" value="female" onclick="dateChange(this)" />女           
+                          </label>
+                        </div>                                         
+                      </div>                                     
+
+
+                      <!---------------- 重疾 ------------------>
+
+                      <div id="instruction1">
+                        <p class="instruction">
+
+                        基本保额是 <select style="width:40px;" class="form-control" id="insurance_disease_coverage" onchange="set_insurance_disease_instruction()">
+                               <option value="10">10万</option>
+                                <option value="20">20万</option>
+                                <option value="30">30万</option>
+                                <option value="40">40万</option>
+                                <option value="50">50万</option>
+                            </select>元，
+                        少儿重疾险产品有<select style="width:120px;" class="form-control" id="current_disease_insurance_products" onchange="set_insurance_disease_instruction()"></select> 
+                        （附加或组合百万医疗）。
+
+                        <span class="glyphicon glyphicon-info-sign"></span>选择20年缴，每年保费分别是<text id="disease_premium" > _____</text>元， 购买重疾险，均赠送重疾险少儿贝健康，保额重疾10万+轻症2万。即综合基本保障额度增加到<text id="total_coverage"> _____</text>万元。</p>
+                      </div>
+
+                      <!---------------- 综合医疗 ------------------>
+
+                      <div id="instruction2"  class="hidecontent">
+                        <p><span class="glyphicon glyphicon-info-sign"></span>基本保额是 <select style="font-size:1.2rem;width:40px;display:inline;" class="form-control" id="coverage" onchange="set_insurance_disease_instruction()">
+                                <option value="1">1万</option>
+                                <option value="2">2万</option>
+                                <option value="3">3万</option>
+                                <option value="4">4万</option>
+                                <option value="5">5万</option>
+                                <option value="6">6万</option>
+                                <option value="7">7万</option>
+                                <option value="8">8万</option>
+                                <option value="9">9万</option>
+                                <option value="10">10万</option>
+                                <option value="20">20万</option>
+                                <option value="25">25万</option>
+                            </select>元，
+                        少儿重疾险产品有<select style="font-size:1.2rem;width:120px;display:inline;" class="form-control" id="current_disease_insurance_products" onchange="set_insurance_disease_instruction()"></select> 
+                        （附加或组合百万医疗）。均选择20年缴，每年保费分别是<text id="premium1" class="text-warning bg-warning lead2"> _____万元</text>， 购买重疾险，均赠送重疾险少儿贝健康，保额重疾10万+轻症2万。即综合基本保障额度增加到<text id="premium2" class="text-warning bg-warning lead2"> _____万元</text>。</p>
+                      </div>
+
+                      <!---------------- 教育/创业 ------------------>
+
+                      <div id="instruction3"  class="hidecontent">
+                          <div style="font-size:1.2rem;" class="form-group"> 
+                              <label class="control-label col-sm-7 no_rspace ">
+                                 出国留学/大学教育总预算
+                              </label>                                         
+                              <div class="col-sm-5 no_lspace"> 
+                                  <select style="font-size:1.2rem;" class="form-control" id="education_budget" onchange="set_insurance_education_instruction()">
+                                      <option value="6">6万</option>
+                                      <option value="8">8万</option>
+                                      <option value="10">10万</option>
+                                      <option value="20">20万</option>
+                                      <option value="30">30万</option>
+                                      <option value="40">40万</option>
+                                      <option value="50">50万</option>
+                                      <option value="60">60万</option>
+                                      <option value="80">80万</option>
+                                      <option value="100">100万</option>
+                                  </select>
+                              </div>                                         
+                          </div>                                     
+                          <div style="font-size:1.2rem;" class="form-group"> 
+                              <label class="control-label col-sm-7 no_rspace ">
+                                 结婚/创业总预算
+                              </label>                                         
+                              <div class="col-sm-5 no_lspace"> 
+                                  <select style="font-size:1.2rem;" class="form-control" id="venture_budget" onchange="set_insurance_education_instruction()">
+                                      <option value="10">10万</option>
+                                      <option value="20">20万</option>
+                                      <option value="30">30万</option>
+                                      <option value="40">40万</option>
+                                      <option value="50">50万</option>
+                                      <option value="100">100万</option>
+                                      <option value="150">150万</option>
+                                      <option value="200">200万</option>
+                                  </select>
+                              </div>                                         
+                          </div>                                     
+                          <p class="instruction">为满足以上预算，选择短期年金产品  <select style="width:120px;" class="form-control" id="current_education_insurance_products" onchange="set_insurance_education_instruction()"></select>。 <br>
+                        <span class="glyphicon glyphicon-info-sign"></span>需要购买的保额至少是 <text id="education_coverage" > _____</text>万元 。<br>
+
+                        <span class="glyphicon glyphicon-info-sign"></span>从现在起开始缴存保费，缴费期10年，每年要存入的数额是<text id="education_premium" >_____</text>元。</p>                        
+                      </div>
+
+                      <!---------------- 现金流 ------------------>
+                      <div id="instruction4"  class="hidecontent">
+                        <p class="instruction">
+                        选择年金产品<select style="width:120px;" class="form-control" id="current_cashflow_insurance_products" onchange="set_insurance_cashflow_instruction()"></select>，
+                        缴费年限10年， 每年缴费<select style="width:80px;" class="form-control" id="cashflow_premium" onchange="set_insurance_cashflow_instruction()">
+                                      <option value="0.5">5000元</option>
+                                      <option value="1">1万元</option>
+                                      <option value="2">2万元</option>
+                                      <option value="3">3万元</option>
+                                      <option value="4">4万元</option>
+                                      <option value="5">5万元</option>
+                                      <option value="10">10万元</option>
+                                  </select>
+                         。<br>
+
+                        <span class="glyphicon glyphicon-info-sign"></span>每年领取<text id="cashflow_everyyear_receiption"> _____</text>元，60岁后每年领取<text id="cashflow_after60_receiption" > _____</text>元。<br>
+                        
+                        <span class="glyphicon glyphicon-info-sign"></span>假如不领取，只在特殊阶段领取：19岁-22岁大学教育每年领取<text id="cashflow_education_receiption"> _____</text>元；27岁创业和结婚领取<text id="cashflow_venture_receiption"> _____</text>元；60岁-80岁每年领取<text id="cashflow_retirement_receiption"> _____</text>元。80岁时领<text id="cashflow_80_receiption"> _____</text>元<br>
+
+                        <span class="glyphicon glyphicon-info-sign"></span>假如一直不领取，到100岁，按保底利率（3%）共有<text id="cashflow_100_min"> _____</text>元；按中等利率(4.5%)，共有<text id="cashflow_100_mid"> _____</text>元，按最高利率(6%)共有<text id="cashflow_100_max">_____</text>元。
+
+                        </p>
+                      </div>
+                    </form>                             
+                    <br />
+                </section>  
+            </div>
+          </div>
+        </div>
+
+        <hr style="height:3px;border:none;border-top:3px double #555555;" />
+        <div style="margin:-10px 10px 5px 10px;font-size:1.5rem;color:#fff;">产品列表：</div>
+
+        <!--产品列表-->         
+        <div class="container-fluid" style="margin-bottom:-20px;">
+          <div class="row-fluid">
+            <div class="span12">
+
+              <!---------------- content1 -------------->
+              <div id="content1">  
+
+                <ul id="insurance_disease_product_list" class="thumbnails">
+                            <!--li class="span4">
+                    <div class="thumbnail tsc_ribbon_wrap edge">
+
+                      <div class="ribbon-wrap right-edge fork lblue"><spathumbnailsn>定期寿险</span></div>
+
+                      <img alt="300x200" src="../img/insurance_diseases/leankang.png" />
+                      <div class="caption">
+                        <h5>
+                          乐安康 <small>泰康人寿</small>
+                        </h5>
+                        <p>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。
+                        </p>
+                        <p style="margin-bottom:5px;margin-top:0px;float:right;background:#fff;">
+                          <input type="checkbox"><label>加入方案</label>
+                        </p>
+                      </div>
+                    </div>
+                  </li-->
+               </ul>
+            </div> 
+
+              <!---------------- content2 -------------->
+              <div id="content2"  class="hidecontent">  
+
+                <ul id="insurance_health_product_list" class="thumbnails">
+                            <!--li class="span4">
+                    <div class="thumbnail tsc_ribbon_wrap edge">
+
+                      <div class="ribbon-wrap right-edge fork lblue"><spathumbnailsn>定期寿险</span></div>
+
+                      <img alt="300x200" src="../img/insurance_diseases/leankang.png" />
+                      <div class="caption">
+                        <h5>
+                          乐安康 <small>泰康人寿</small>
+                        </h5>
+                        <p>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。
+                        </p>
+                        <p style="margin-bottom:5px;margin-top:0px;float:right;background:#fff;">
+                          <input type="checkbox"><label>加入方案</label>
+                        </p>
+                      </div>
+                    </div>
+                  </li-->
+               </ul>
+            </div>               
+
+            <!-------------- content3 ---------------->
+            <div id="content3" class="hidecontent">
+                
+              <ul id="insurance_education_product_list" class="thumbnails">
+                    <!--li class="span4">
+                    <div class="thumbnail tsc_ribbon_wrap edge">
+
+                      <div class="ribbon-wrap right-edge fork lblue"><span>定期寿险</span></div>
+
+                      <img alt="300x200" src="../img/insurance_diseases/leankang.png" />
+                      <div class="caption">
+                        <h5>
+                          乐安康 <small>泰康人寿</small>
+                        </h5>
+                        <p>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。
+                        </p>
+                        <p style="margin-bottom:5px;margin-top:0px;float:right;background:#fff;">
+                          <input type="checkbox"><label>加入方案</label>
+                        </p>
+                      </div>
+                    </div>
+                  </li-->
+                </ul>
+            </div>      
+
+            <!---------------- content4 ------------------>
+            <div id="content4" class="hidecontent">
+
+                <ul id="insurance_cashflow_product_list" class="thumbnails">
+                    <!--li class="span4">
+                    <div class="thumbnail tsc_ribbon_wrap edge">
+
+                      <div class="ribbon-wrap right-edge fork lblue"><span>定期寿险</span></div>
+
+                      <img alt="300x200" src="../img/insurance_diseases/leankang.png" />
+                      <div class="caption">
+                        <h5>
+                          乐安康 <small>泰康人寿</small>
+                        </h5>
+                        <p>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。
+                        </p>
+                        <p style="margin-bottom:5px;margin-top:0px;float:right;background:#fff;">
+                          <input type="checkbox"><label>加入方案</label>
+                        </p>
+                      </div>
+                    </div>
+                  </li-->
+                </ul>
+            </div>                     
+            <!--content3-->
+          </div>
+        </div>
+      </div>         
+      <!---container-fluid -->
+      <hr>
+      <!-- /END THE FEATURETTES -->
+      <!-- FOOTER -->
+      <footer>
+          <p class="pull-right"><a href="#">回到页首</a></p>
+          <p>&copy; 2017 怡得保, Inc. &middot; <a href="#">隐私</a> &middot; <a href="#">条款</a></p>
+      </footer>
+    </body>     
+</html>

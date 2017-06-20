@@ -1,0 +1,481 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>怡得保——保身价</title>         
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta charset="UTF-8"> 
+        <link rel="stylesheet" href="../../bootstrap/css/paper/bootstrap.css"> 
+        <link rel="stylesheet" href="../template/css/ydb.css">
+        <script src="../../bootstrap/js/jquery.min.js"></script>         
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>  
+        <script src="../../utils/mobisscroll/js/mobiscroll.custom-3.0.0-beta2.min.js"></script>          
+        <link rel="stylesheet" href="../../utils/mobisscroll/css/mobiscroll.custom-3.0.0-beta2.min.css">
+        <link rel="stylesheet" type="text/css" href="../../utils/tsc_ribbon/tsc_ribbon.css">
+        <script type="text/javascript" src="insurance_personal_value.js"  charset="gb2312"></script>        
+        <script src="../js/ydb.js"></script>
+        <style>
+
+        body{background: #0892B5;}
+        .form-horizontal .control-label {
+            text-align: left;
+        }
+
+        ul li{  
+        list-style-type:none;  
+        margin:10px 10px 30px 10px;
+        padding:0px;
+        }  
+
+        ul {
+          margin:0px 10px;
+          padding:0px 10px;
+        }
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 200px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 200px;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 200px;
+}
+
+.featurette-divider
+{
+    margin: 80px 0;
+}
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.no_lspace{
+padding-left: 0;
+margin-left :0;
+}
+
+.no_rspace{
+padding-right: 0;
+margin-right:0;  
+}
+
+    .plan-block {
+    position: relative;
+    width: 96%;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 4px 4px 4px rgba(44, 45, 70, .1);
+    margin:-30px auto 10px;
+    }
+
+        </style>
+
+    <script>
+        $(function () {
+            var currYear = (new Date()).getFullYear();  
+            var opt={}; 
+            opt.date = {preset : 'date'};
+            opt.default = {  
+                theme: 'ios', //皮肤样式  
+                display: 'center', //显示方式   
+                mode: 'scroller', //日期选择模式  
+                dateFormat: 'yyyy-mm-dd',  
+                lang: 'zh',  
+                showNow: true,  
+                nowText: "今天",  
+                startYear: currYear - 60, //开始年份  
+                endYear: currYear //结束年份
+            };
+
+            $("#birthday").mobiscroll($.extend(opt['date'], opt['default']));//年月日型  
+        });
+    </script>
+
+    </head >     
+    <body onload="load()"> 
+
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>   
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img style="display:block;width:100%;" src="../img/1-1.png" alt="First slide">
+          </div>
+          <div class="item">
+            <img style="display:block;width:100%;" src="../img/1-3.png" alt="Second slide">
+          </div>
+          <div class="item">
+            <img style="display:block;width:100%;" src="../img/1-2.jpg" alt="Third slide">
+          </div>
+        </div>
+      </div>
+
+      <!--菜单条-->
+      <nav style="margin-bottom:0;" class="navbar navbar-default" role="navigation">
+        <ul class="nav navbar-nav">
+
+          <li style = "margin-bottom:0;maring-top:0;" id="tag1" class="active">
+            <a href="#" onclick="switchTag('tag1','content1');this.blur();">身价估算</a>
+          </li>
+          <li style = "margin-bottom:0;maring-top:0;" id="tag2">
+            <a href="#" onclick="switchTag('tag2','content2');this.blur();">产品列表</a>
+          </li>
+          <li style = "margin-bottom:0;maring-top:0;" id="tag0">
+            <a href="../index.html">回首页</a>
+          </li>
+        </ul>
+
+      </nav>
+       
+      <div id="content1" class="container-fluid"> 
+      <section class="plan-block">
+        <form role="form" class="form-horizontal"> 
+            <div class="page-header" style="padding:10px;"> 
+                <h6>① 生命价值</h6> 
+            </div>                     
+            <div class="form-group"> 
+                <label class="control-label col-sm-7 no_rspace ">出生日期</label>                         
+                <div class="col-sm-5 no_lspace"> 
+                    <input id="birthday" class="form-control input-sm no_lspace" value ="1987-01-01" onselect="dateChange()"/> 
+                </div>                         
+            </div>                     
+            <div class="form-group"> 
+                <label class="control-label col-sm-7 no_rspace">个人年收入</label>                         
+                <div class="col-sm-5 no_lspace"> 
+                  <select class="form-control input-sm no_lspace" size="1"  id = "income" onchange="incomeChange(this.options[this.options.selectedIndex].value)">
+                    <option value="5">5万元</option>
+                    <option value="8">8万元</option>
+                    <option value="10">10万元</option>
+                    <option value="15">15万元</option>
+                    <option value="20">20万元</option>
+                    <option value="25">25万元</option>
+                    <option value="30">30万元</option>
+                    <option value="35">35万元</option>
+                    <option value="40">40万元</option>
+                    <option value="45">45万元</option>
+                    <option value="50">50万元</option>
+                    <option value="60">60万元</option>
+                    <option value="70">70万元</option>
+                    <option value="80">80万元</option>
+                    <option value="90">90万元</option>
+                    <option value="100">100万元</option>
+                    <option value="110">100万元以上</option>
+                  </select> 
+                </div>                         
+            </div> 
+            <div class="form-group"> 
+                <label class="control-label col-sm-7 no_rspace">个人收入占家庭收入</label>                         
+                <div class="col-sm-5 no_lspace"> 
+                    <select class="form-control input-sm no_lspace" size="1"  id = "income_percent" onchange="incomePercentChange(this.options[this.options.selectedIndex].value)">
+                    <option value="0.4">40%</option>
+                    <option value="0.5">50%</option>
+                    <option value="0.6">60%</option>
+                    <option value="0.7">70%</option>
+                    <option value="0.8">80%</option>
+                    <option value="0.9">90%</option>
+                    <option value="1.0">100%</option>
+                  </select>  
+                </div>                         
+            </div>                     
+            <div class="form-group"> 
+                <label class="control-label col-sm-7 no_rspace">个人花销占个人收入</label>                         
+                <div class="col-sm-5 no_lspace"> 
+                  <select class="form-control input-sm no_lspace" size="1"  id = "selfSpense_percent" onchange="selfSpensePercentChange(this.options[this.options.selectedIndex].value)">
+                    <option value="0.1">10%</option>
+                    <option value="0.2">20%</option>
+                    <option value="0.3">30%</option>
+                    <option value="0.4">40%</option>
+                    <option value="0.5">50%</option>
+                  </select> 
+                </div>                         
+            </div> 
+
+            <div style="padding:10px;" class="text-right">
+                <label class="control-label">个人对家庭贡献：</label>
+                  <text id="self_contribute" class="text-warning bg-warning lead2">240万元</text>
+            </div>  
+        </form> 
+        </section>
+        
+        <section class="plan-block">
+        <form role="form" class="form-horizontal"> 
+            <div class="page-header" style="padding:10px;"> 
+                <h6>② 家庭未尽经济责任</h6> 
+            </div>                     
+            <div  class="form-group"> 
+                <label class="control-label col-sm-7 no_rspace">剩余房贷</label>                         
+                <div class="col-sm-5 no_lspace"> 
+                    <select class="form-control input-sm no_lspace" size="1"  id = "house_loan" onchange="houseLoanChange(this.options[this.options.selectedIndex].value)">
+                  <option value="0">0万元</option>
+                  <option value="5">5万元</option>
+                  <option value="8">8万元</option>
+                  <option value="10">10万元</option>
+                  <option value="15">15万元</option>
+                  <option value="20">20万元</option>
+                  <option value="25">25万元</option>
+                  <option value="30">30万元</option>
+                  <option value="35">35万元</option>
+                  <option value="40">40万元</option>
+                  <option value="45">45万元</option>
+                  <option value="50">50万元</option>
+                  <option value="60">60万元</option>
+                  <option value="70">70万元</option>
+                  <option value="80">80万元</option>
+                  <option value="90">90万元</option>
+                  <option value="100">100万元</option>
+                  <option value="120">120万元</option>
+                  <option value="140">140万元</option>
+                  <option value="160">160万元</option>
+                  <option value="180">180万元</option>
+                  <option value="200">200万元以上</option>
+                </select>
+                </div>                         
+            </div>
+
+            <div  class="form-group"> 
+                <label class="control-label col-sm-7 no_rspace">剩余车贷</label>                         
+                <div class="col-sm-5 no_lspace"> 
+                  <select class="form-control input-sm no_lspace" size="1" id = "car_loan" onchange="carLoanChange(this.options[this.options.selectedIndex].value)">
+                  <option value="0">0万元</option>
+                  <option value="5">5万元</option>
+                  <option value="8">8万元</option>
+                  <option value="10">10万元</option>
+                  <option value="15">15万元</option>
+                  <option value="20">20万元</option>
+                  <option value="25">25万元</option>
+                  <option value="30">30万元</option>
+                  <option value="35">35万元</option>
+                  <option value="40">40万元</option>
+                  <option value="45">45万元</option>
+                  <option value="50">50万元</option>
+                  <option value="60">60万元</option>
+                  <option value="70">70万元</option>
+                  <option value="80">80万元</option>
+                  <option value="90">90万元</option>
+                  <option value="100">100万元</option>
+                  <option value="120">120万元以上</option>
+                </select>  
+                </div>                         
+            </div>   
+
+            <div class="form-group"> 
+                <label class="control-label col-sm-7 no_rspace">小孩教育预算</label>                         
+                <div class="col-sm-5 no_lspace"> 
+                    <select class="form-control input-sm no_lspace" size="1" id = "education_budget" onchange="educationBudgetChange(this.options[this.options.selectedIndex].value)">
+                  <option value="0">0万元</option>
+                  <option value="10">10万元</option>
+                  <option value="15">15万元</option>
+                  <option value="20">20万元</option>
+                  <option value="25">25万元</option>
+                  <option value="30">30万元</option>
+                  <option value="35">35万元</option>
+                  <option value="40">40万元</option>
+                  <option value="45">45万元</option>
+                  <option value="50">50万元</option>
+                  <option value="60">60万元</option>
+                  <option value="70">70万元</option>
+                  <option value="80">80万元</option>
+                  <option value="90">90万元</option>
+                  <option value="100">100万元</option>
+                  <option value="120">120万元以上</option>
+                </select>
+                </div>                         
+            </div>   
+
+            <div class="form-group"> 
+                <label class="control-label col-sm-7 no_rspace">老人赡养预算</label>                         
+                <div class="col-sm-5 no_lspace"> 
+                 <select class="form-control input-sm no_lspace" size="1" id = "parental_support" onchange="parentalSupportChange(this.options[this.options.selectedIndex].value)">
+                    <option value="0">0万元</option>
+                    <option value="10">10万元</option>
+                    <option value="15">15万元</option>
+                    <option value="20">20万元</option>
+                    <option value="25">25万元</option>
+                    <option value="30">30万元</option>
+                    <option value="35">35万元</option>
+                    <option value="40">40万元</option>
+                    <option value="45">45万元</option>
+                    <option value="50">50万元</option>
+                    <option value="60">60万元</option>
+                    <option value="70">70万元</option>
+                    <option value="80">80万元</option>
+                    <option value="90">90万元</option>
+                    <option value="100">100万元</option>
+                    <option value="120">120万元以上</option>
+                  </select>                         
+                </div>                         
+            </div>                                                                              
+
+            <div class="form-group"> 
+                <label class="control-label col-sm-7 no_rspace">未来5年生活开支</label>                         
+                <div class="col-sm-5 no_lspace"> 
+                     <select class="form-control input-sm no_lspace" size="1" id = "spouse_support_pa" onchange="spouseSupportChange(this.options[this.options.selectedIndex].value)">
+                      <option value="0">0万元</option>
+                      <option value="1">1万元</option>
+                      <option value="2">2万元</option>
+                      <option value="3">3万元</option>
+                      <option value="4">4万元</option>
+                      <option value="5">5万元</option>
+                      <option value="6">6万元</option>
+                      <option value="7">7万元</option>
+                      <option value="8">8万元</option>
+                      <option value="9">9万元</option>
+                      <option value="10">10万元</option>
+                      <option value="12">12万元</option>
+                      <option value="15">15万元</option>
+                      <option value="20">20万元</option>
+                      <option value="25">25万元</option>
+                      <option value="30">30万元</option>
+                      <option value="40">40万元</option>
+                      <option value="50">50万元</option>
+                      <option value="60">60万元</option>
+                      <option value="70">70万元</option>
+                      <option value="80">80万元以上</option>
+                    </select> 
+                </div>                         
+            </div>            
+
+            <div style="padding:10px;" class="text-right">
+                <label class="control-label">个人未尽经济责任：</label>
+                  <text id="finicial_responsibility" class="text-warning bg-warning lead2">0万元</text>
+            </div>                                                                                        
+
+        </form>   
+        </section>
+
+        <br/>
+        <br/>
+          <!--container content1-->             
+      </div>   
+
+
+    <!--产品列表-->   
+
+      <div class="container-fluid">
+
+          <div id = "content2" class="hidecontent span12"  >
+
+            <ul id="product_list" style="margin-top:20px;" class="thumbnails">
+              
+              <!--li class="span4">
+                <div class="thumbnail tsc_ribbon_wrap edge">
+
+                  <div class="ribbon-wrap right-edge fork lblue"><span>定期寿险</span></div>
+
+                  <img alt="300x200" src="../img/insurance_diseases/leankang.png" />
+                  <div class="caption">
+                    <h5>
+                      乐安康 <small>泰康人寿</small>
+                    </h5>
+                    <p>
+                      ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                      ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                      ★ 享泰康绿通服务，解决百姓看病难问题。
+                    </p>
+                    <p style="margin-bottom:5px;margin-top:0px;float:right;background:#fff;">
+                      <input type="checkbox"><label>加入方案</label>
+                    </p>
+                  </div>
+                </div>
+              </li-->
+
+            </ul>
+
+          </div>    <!--content2-->
+
+    </div>
+
+    <div class="tabBar">
+      <text id="bar_title" class="name">我要保的身价至少是：￥</text>
+      <text id="bar_value" class="totalPrice"></text>
+      <text id="bar_unit" class="name">万元</text>
+      <div class="nextStep" onclick="next()">
+          <text id="bar_next">选择产品</text>
+      </div>
+    </div>
+
+    <hr>
+    
+    <!-- /END THE FEATURETTES -->
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right"><a href="#">回到页首</a></p>
+        <p>&copy; 2017 怡得保, Inc. &middot; <a href="#">隐私</a> &middot; <a href="#">条款</a></p>
+    </footer>
+
+    <!-- 模态框（Modal） -->
+    <button id = "checkMainInsurance" class="hidecontent" data-toggle="modal" data-target="#checkMainInsuranceDlg">提示：删除主险，其附加险也将一起被删除。</button>
+
+
+    <button id = "checkAdditionalInsurance" class="hidecontent" data-toggle="modal" data-target="#checkAdditionalInsuranceDlg">提示：选择附加险，必须先选择其主险</button>
+
+    <div class="modal fade" id="checkMainInsuranceDlg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">删除主险，其附加险也将一起被删除。</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade" id="checkAdditionalInsuranceDlg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">选择附加险，必须先选择其主险。</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade" id="dangerDlg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">危险家庭，建议……。</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+
+</body>     
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>怡得保——养老</title>         
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta charset="UTF-8"> 
+        <link rel="stylesheet" href="../../bootstrap/css/paper/bootstrap.css"> 
+        <link rel="stylesheet" href="../template/css/ydb.css">
+        <script src="../../bootstrap/js/jquery.min.js"></script>         
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>  
+        <script src="../../utils/mobisscroll/js/mobiscroll.custom-3.0.0-beta2.min.js"></script>          
+        <link rel="stylesheet" href="../../utils/mobisscroll/css/mobiscroll.custom-3.0.0-beta2.min.css">
+        <link rel="stylesheet" type="text/css" href="../../utils/tsc_ribbon/tsc_ribbon.css">
+        <script src="../js/ydb.js"></script>
+        <script src="insurance_endowment.js"></script>         
+        <style>
+
+        body{background: #36C385;}
+
+        .form-horizontal .control-label {
+            text-align: left;
+        }
+
+
+        ul li{  
+        list-style-type:none;  
+        margin:10px 10px 30px 10px;
+        padding:0px;
+        }  
+
+        ul {
+          margin:0px 10px;
+          padding:0px 10px;
+        }
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 200px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 200px;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 200px;
+}
+
+.featurette-divider
+{
+    margin: 80px 0;
+}
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.no_lspace{
+padding-left: 0;
+margin-left :0;
+}
+
+.no_rspace{
+padding-right: 0;
+margin-right:0;  
+}
+
+    .plan-block {
+    position: relative;
+    width: 96%;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 4px 4px 4px rgba(44, 45, 70, .1);
+    margin:-10px auto;
+    padding-top:15px;
+    }
+
+    </style>
+
+    <script>
+        $(function () {
+            var currYear = (new Date()).getFullYear();  
+            var opt={}; 
+            opt.date = {preset : 'date'};
+            opt.default = {  
+                theme: 'ios', //皮肤样式  
+                display: 'center', //显示方式   
+                mode: 'scroller', //日期选择模式  
+                dateFormat: 'yyyy-mm-dd',  
+                lang: 'zh',  
+                showNow: true,  
+                nowText: "今天",  
+                startYear: currYear - 60, //开始年份  
+                endYear: currYear-30 //结束年份
+            };
+
+            $("#birthday").mobiscroll($.extend(opt['date'], opt['default']));//年月日型  
+        });
+    </script>
+
+    </head >     
+    <body onload="load()"> 
+
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" 
+            class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>   
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img style="display:block;width:100%;" src="../img/2-1.jpg" alt="First slide">
+          </div>
+          <div class="item">
+            <img style="display:block;width:100%;" src="../img/2-2.jpg" alt="Second slide">
+          </div>
+          <div class="item">
+            <img style="display:block;width:100%;" src="../img/2-3.jpg" alt="Third slide">
+          </div>
+        </div>
+       </div>
+
+        <!--菜单条-->
+        <nav class="navbar navbar-default" role="navigation">
+          <ul class="nav navbar-nav">
+
+            <li style = "margin-bottom:0;maring-top:0;" id="tag1" class="active">
+              <a href="#" onclick="switchTag('tag1','content1');this.blur();">养老金估算</a>
+            </li>
+            <li style = "margin-bottom:0;maring-top:0;" id="tag2">
+              <a href="#" onclick="switchTag('tag2','content2');this.blur();">产品列表</a>
+            </li>
+            <li style = "margin-bottom:0;maring-top:0;" id="tag0">
+              <a href="../index.html">回首页</a>
+            </li>
+          </ul>
+
+        </nav>
+       
+        <div id="content1" class="container-fluid"> 
+            <section class="plan-block">
+                <form role="form" class="form-horizontal"> 
+                    
+                    <div class="form-group"> 
+                        <label class="control-label col-sm-6 no_rspace ">出生日期</label>                         
+                        <div class="col-sm-6 no_lspace"> 
+                            <input id="birthday" class="form-control input-sm no_lspace" placeholder ="请输入出生日期" onselect="dateChange()"/> 
+                        </div>                         
+                    </div>                     
+                    <div class="form-group"> 
+                        <label class="control-label col-sm-6 no_rspace">个人月收入</label>                         
+                        <div class="col-sm-6 no_lspace"> 
+                          <select class="form-control input-sm no_lspace" size="1"  id = "income" onchange="incomeChange(this.options[this.options.selectedIndex].value)">
+                            <option value="3000">3000元</option>
+                            <option value="4000">4000元</option>
+                            <option value="5000">5000元</option>
+                            <option value="6000" selected="selected">6000元</option>
+                            <option value="7000">7000元</option>
+                            <option value="8000">8000元</option>
+                            <option value="9000">9000元</option>
+                            <option value="10000">10000元</option>
+                            <option value="12000">12000元</option>
+                            <option value="15000">15000元</option>
+                            <option value="18000">18000元</option>
+                            <option value="20000">20000元以上</option>
+                          </select> 
+                        </div>                         
+                    </div> 
+                    <div class="form-group"> 
+                        <label class="control-label col-sm-6 no_rspace">退休后不低于目前</label>                         
+                        <div class="col-sm-6 no_lspace"> 
+                            <select class="form-control input-sm no_lspace" size="1"  id = "retire_level" onchange="retireLevelChange(this.options[this.options.selectedIndex].value)">
+                            <option value="0.5">50%</option>
+                            <option value="0.6" selected="selected">60%</option>
+                            <option value="0.7">70%</option>
+                            <option value="0.8">80%</option>
+                            <option value="0.9">90%</option>
+                            <option value="1.0">100%</option>
+                          </select>  
+                        </div>                         
+                    </div>  
+                    <div class="form-group"> 
+                        <label class="control-label col-sm-6 no_rspace">是否有社保？</label>                         
+                        <div class="col-sm-6 no_lspace"> 
+                           <input id="social_security1" type="checkbox" checked="checked" onclick="socialSecurityChange(1)">有
+                           <input id="social_security2" type="checkbox" onclick="socialSecurityChange(2)">没有   
+                        </div>                         
+                    </div> 
+
+                    <div id = "ss1" class="form-group"> 
+                        <label class="control-label col-sm-6 no_rspace">社保共缴纳年限</label>                         
+                        <div class="col-sm-6 no_lspace"> 
+                          <select class="form-control input-sm no_lspace" size="1"  id = "sspayment_year" onchange="ssPaymentYearChange(this.options[this.options.selectedIndex].value)">
+                            <option value="15" selected="selected">15年</option>
+                            <option value="16">16年</option>
+                            <option value="17">17年</option>
+                            <option value="18">18年</option>
+                            <option value="19">19年</option>
+                            <option value="20">20年</option>
+                            <option value="21">21年</option>
+                            <option value="22">22年</option>
+                            <option value="23">23年</option>
+                            <option value="24">24年</option>
+                            <option value="25">25年</option>
+                            <option value="26">26年</option>
+                            <option value="27">27年</option>
+                            <option value="28">28年</option>
+                            <option value="29">29年</option>
+                            <option value="30">30年</option>
+                            <option value="31">31年</option>
+                            <option value="32">32年</option>
+                            <option value="33">33年</option>
+                            <option value="34">34年</option>
+                            <option value="35">35年</option>
+                            <option value="36">36年</option>
+                            <option value="37">37年</option>
+                            <option value="38">38年</option>
+                            <option value="39">39年</option>
+                            <option value="40">40年</option>
+                            <option value="41">41年</option>
+                            <option value="42">42年</option>
+                            <option value="43">43年</option>
+                            <option value="44">44年</option>
+                            <option value="45">45年</option>
+                          </select> 
+                        </div>                         
+                    </div> 
+                    <div  id = "ss2" class="form-group"> 
+                        <label class="control-label col-sm-6 no_rspace">所在城市平均工资</label>                         
+                        <div class="col-sm-6 no_lspace"> 
+                          <select class="form-control input-sm no_lspace" size="1"  id = "average_salary" onchange="averageSalaryChange(this.options[this.options.selectedIndex].value)">
+                            <option value="2000">2000元</option>
+                            <option value="2500">2500元</option>
+                            <option value="3000">3000元</option>
+                            <option value="4000">4000元</option>
+                            <option value="5000" selected="selected">5000元</option>
+                            <option value="6000">6000元</option>
+                            <option value="7000">7000元</option>
+                            <option value="8000">8000元</option>
+                            <option value="9000">9000元</option>
+                            <option value="1000">1万元</option>
+                          </select> 
+                        </div>                         
+                    </div> 
+                    <div  id = "ss3" class="form-group"> 
+                        <label class="control-label col-sm-6 no_rspace">平均社保缴纳基数</label>                         
+                        <div class="col-sm-6 no_lspace"> 
+                          <select class="form-control input-sm no_lspace" size="1"  id = "averageSsBase" onchange="averageSsBaseChange(this.options[this.options.selectedIndex].value)">
+                            <option value="1000">1000元</option>
+                            <option value="1500">1500元</option>
+                            <option value="2000">2000元</option>
+                            <option value="2500">2500元</option>
+                            <option value="3000">3000元</option>
+                            <option value="3500" selected="selected">3500元</option>
+                            <option value="4000">4000元</option>
+                            <option value="4500">4500元</option>
+                            <option value="5000">5000元</option>
+                            <option value="6000">6000元</option>
+                          </select> 
+                        </div>                         
+                    </div>  
+
+                    <div class="form-group"> 
+                        <label class="control-label col-sm-6 no_rspace">家族同性人均寿命</label>
+                        <div class="col-sm-6 no_lspace">
+                          <select class="form-control input-sm no_lspace" size="1"  id = "familySameGenderLife" onchange="familySameGenderLifeChange(this.options[this.options.selectedIndex].value)">
+                            <option value="60">60岁</option>
+                            <option value="61">61岁</option>
+                            <option value="62">62岁</option>
+                            <option value="63">63岁</option>
+                            <option value="64">64岁</option>
+                            <option value="65">65岁</option>
+                            <option value="66">66岁</option>
+                            <option value="67">67岁</option>
+                            <option value="68">68岁</option>
+                            <option value="69">69岁</option>
+                            <option value="70">70岁</option>
+                            <option value="71">71岁</option>
+                            <option value="72">72岁</option>
+                            <option value="73">73岁</option>
+                            <option value="74">74岁</option>
+                            <option value="75" selected="selected">75岁</option>
+                            <option value="76">76岁</option>
+                            <option value="77">77岁</option>
+                            <option value="78">78岁</option>
+                            <option value="79">79岁</option>
+                            <option value="80">80岁</option>
+                            <option value="81">81岁</option>
+                            <option value="82">82岁</option>
+                            <option value="83">83岁</option>
+                            <option value="84">84岁</option>
+                            <option value="85">85岁</option>
+                            <option value="86">86岁</option>
+                            <option value="87">87岁</option>
+                            <option value="88">88岁</option>
+                            <option value="89">89岁</option>
+                            <option value="90">90岁</option>
+                            <option value="91">91岁</option>
+                            <option value="92">92岁</option>
+                            <option value="93">93岁</option>
+                            <option value="94">94岁</option>
+                            <option value="95">95岁</option>
+                            <option value="96">96岁</option>
+                            <option value="97">97岁</option>
+                            <option value="98">98岁</option>
+                            <option value="99">99岁</option>
+                          </select> 
+                        </div>                         
+                    </div>  
+          
+                    <div class="form-group">
+                    <label class="control-label col-sm-12"><span class="glyphicon glyphicon-info-sign"></span>
+                        假定每过5年，平均寿命增长1年，我的可预期寿命：
+                          <span id="expected_life_span" class="text-warning bg-warning lead2">_____岁</span>。
+                        <span id="ss4">假定平均工资以每年5%递增，</span>我可领取的退休工资约是：
+                          <span id="retirement_pendion" class="text-warning bg-warning lead2">_____元/月</span>
+                    </label>
+                    </div> 
+
+                    <div style="padding-right:10px;" class="text-right">
+                        <label class="control-label">我的养老金缺口是：</label>
+                          <text id="pending_gap" class="text-warning bg-warning lead2"> _____万元</text>
+                    </div> 
+
+                </form> 
+                <br/>
+            </section>
+
+            <br/>
+            <br/>
+            <!--container content1-->             
+        </div>   
+
+
+        <!--产品列表-->   
+
+          <div class="container-fluid" style="margin-top:-20px;margin-bottom:-20px;" >
+            <div class="row-fluid">
+              <div class="span12">
+
+                <div id = "content2" class="hidecontent">
+
+                <ul id="product_list" class="thumbnails">
+                  
+                  <!--li class="span4">
+                    <div class="thumbnail tsc_ribbon_wrap edge">
+
+                      <div class="ribbon-wrap right-edge fork lblue"><span>定期寿险</span></div>
+
+                      <img alt="300x200" src="../img/insurance_diseases/leankang.png" />
+                      <div class="caption">
+                        <h5>
+                          乐安康 <small>泰康人寿</small>
+                        </h5>
+                        <p>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。<br>
+                          ★ 享泰康绿通服务，解决百姓看病难问题。
+                        </p>
+                        <p style="margin-bottom:5px;margin-top:0px;float:right;background:#fff;">
+                          <input type="checkbox"><label>加入方案</label>
+                        </p>
+                      </div>
+                    </div>
+                  </li-->
+
+                </ul>
+
+              </div>    <!--content2-->
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tabBar">
+            <div class="sub1">
+                  <text id="bar_title" class="name">养老金缺口：</text>
+                  <text id="bar_value" class="totalPrice"></text>                    
+                  <text id="bar_unit" class="name">万元</text>
+            </div>
+            <div class="sub2">
+                  <text id="product_name" class="totalPrice">未选择产品</text>                    
+            </div>
+          <div class="short_nextStep" onclick="next()">
+              <text id="bar_next">保费测算</text>
+          </div>
+        </div>        
+
+        <hr>
+        
+        <!-- /END THE FEATURETTES -->
+        <!-- FOOTER -->
+        <footer>
+            <p class="pull-right"><a href="#">回到页首</a></p>
+            <p>&copy; 2017 怡得保, Inc. &middot; <a href="#">隐私</a> &middot; <a href="#">条款</a></p>
+        </footer>
+
+        <!-- 模态框（Modal） -->
+        <button id = "checkMainInsurance" class="hidecontent" data-toggle="modal" data-target="#checkMainInsuranceDlg">提示：删除主险，其附加险也将一起被删除。</button>
+
+
+        <button id = "checkAdditionalInsurance" class="hidecontent" data-toggle="modal" data-target="#checkAdditionalInsuranceDlg">提示：选择附加险，必须先选择其主险</button>
+
+        <div class="modal fade" id="checkMainInsuranceDlg" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">删除主险，其附加险也将一起被删除。</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+        <div class="modal fade" id="checkAdditionalInsuranceDlg" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">选择附加险，必须先选择其主险。</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+        <div class="modal fade" id="dangerDlg" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">危险家庭，建议……。</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+
+
+</body>     
+</html>

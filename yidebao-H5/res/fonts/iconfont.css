@@ -1,0 +1,53 @@
+/* 
+* @Author: anchen
+* @Date:   2017-03-10 21:39:57
+* @Last Modified by:   liu zhongtu
+* @Last Modified time: 2017-04-02 15:18:39
+*/
+
+      @font-face {
+          font-family: "iconfont";
+          src: url("iconfont.eot");
+          src: url("iconfont.eot?#iefix") format("embedded-opentype"), url("iconfont.woff") format("woff"), url("iconfont.ttf") format("truetype"), url("iconfont.svg#iconfont") format("svg")
+      }
+      .iconfont, [class*="hz-icon-"]:after, [class*="hz-icon-"]:before, [class^=hz-icon-]:after, [class^=hz-icon-]:before {
+          font-family: "iconfont" !important;
+          font-style: normal;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          vertical-align: top
+      }
+
+	 
+      .hz-icon-button1:after {
+          content: "\e612"
+      }
+      .hz-icon-button2:after {
+          content: "\e61b"
+      }
+      .hz-icon-button3:after {
+          content: "\e661"
+      }
+      .hz-icon-button4:after {
+          content: "\e60f"
+      }
+
+      .hz-icon-selection:after {
+          content: "\e663"
+      }
+      .hz-icon-information:after {
+          content: "\e67f"
+      }      
+
+      .hz-icon-insure:after {
+          content: "\e625"
+      }
+      .hz-icon-accident:after {
+          content: "\e63e"
+      }
+      .hz-icon-payment:after {
+          content: "\e647"
+      }    
+      .hz-icon-default:after {
+          content: "\e60c"
+      }    
